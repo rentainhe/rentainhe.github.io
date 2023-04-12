@@ -64,14 +64,16 @@
             <heading>News</heading>
             <p>
               <li style="margin: 5px;" >
-                <b>2023-04:</b> Release our new project <a href="https://github.com/IDEA-Research/Grounded-Segment-Anything">Grounded Segment Anything</a>, which aims to <b>detect, segment and generate anything</b> with text inputs.
+                <b>2023-04:</b> Preprint our new detection model named <a href="https://github.com/IDEA-Research/Stable-DINO">Stable-DINO</a>, which achieves <b>63.8AP</b> on COCO test-dev with a Swin-Large Backbone!
+              </li>
+              <li style="margin: 5px;" >
+                <b>2023-04:</b> Release our new project <a href="https://github.com/IDEA-Research/Grounded-Segment-Anything">Grounded-Segment-Anything</a>, which aims to <b>detect, segment and generate anything</b>with image, text and audio inputs. <b>Gain more than 5k stars only in 5 days. Github trending top-1 project!</b>
               </li>
               <li style="margin: 5px;" >
                 <b>2023-02:</b> YOSO is accepted to <a href="https://cvpr2023.thecvf.com/">CVPR 2023</a>.
               </li>
               <li style="margin: 5px;" >
-                <b>2022-10:</b> Release our open source toolbox <a href="https://github.com/IDEA-Research/detrex">detrex</a> for <b>Transformer Based Object Detection Algorithm</b> including
-                <b>Deformable-DETR (ICLR 2021)</b>, <b>Conditional-DETR (ICCV 2021)</b>, <b>DAB-DETR (ICLR 2022)</b>, <b>DN-DETR (CVPR 2022)</b>, <b>DINO (ICLR 2023)</b>, <b> MaskDINO (CVPR 2023) </b> etc.
+                <b>2022-10:</b> Release our open source toolbox <a href="https://github.com/IDEA-Research/detrex">detrex</a> for <b>Transformer Based Object Detection Algorithm.</b>
               </li>
               <li style="margin: 5px;" >
                 <b>2022-09:</b> <a href="https://github.com/Mi-Peng/Sparse-Sharpness-Aware-Minimization"> SparseSAM </a></a>is accepted to <a href="https://neurips.cc/Conferences/2022">NeurIPS 2022</a>.
@@ -92,15 +94,48 @@
             <tr>
             <td style="padding:20px;width:100%;vertical-align:middle">
               <p><heading>Publications</heading></p>
-              <!-- <p>
-                * indicates equal contribution
-              </p> -->
+              <p>
+                See full list at <a href="https://scholar.google.com/citations?user=cW4ILs0AAAAJ&hl=zh-CN&oi=ao">Google Scholar.</a> (* indicates equal contribution)
+              </p>
             </td>
           </tr>
         </tbody></table>
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
+          <tr>
+            <td style="padding:20px;width:30%;max-width:30%" align="center">
+              <img style="width:100%;max-width:100%" src="images/stable-dino-arch.png" alt="dise">
+            </td>
+            <td width="75%" valign="center">
+              <papertitle>Detection Transformer with Stable Matching</papertitle>
+              <br>
+              <a href="http://www.lsl.zone/"> Shilong Liu*</a>,
+              <strong>Tianhe Ren*</strong>, 
+              <a href="https://github.com/tuofeilunhifi"> Jiayu Chen*</a>,
+              <a href="https://scholar.google.com/citations?user=U_cvvUwAAAAJ&hl=zh-CN&oi=ao">Zhaoyang Zeng</a>,
+              <a href="https://scholar.google.com/citations?user=B8hPxMQAAAAJ&hl=zh-CN"> Hao Zhang</a>,
+              <a href="https://scholar.google.com/citations?user=ybRe9GcAAAAJ&hl=zh-CN"> Feng Li</a>,  
+              <a href="https://github.com/LHY-HongyangLi"> Hongyang Li</a>,
+              <a href="https://github.com/IDEA-Research/Stable-DINO"> Jun Huang</a>,
+              <a href="https://scholar.google.com/citations?user=dxN1_X0AAAAJ&hl=zh-CN&oi=ao"> Hang Su</a>,
+              <a href="https://ml.cs.tsinghua.edu.cn/~jun/index.shtml"> Jun Zhu</a>,
+              <a href="https://www.leizhang.org/"> Lei Zhang</a>
+              <br>
+              <em>arXiv preprint arXiv:2304.04742</em>
+              <br>
+              <a href="https://arxiv.org/abs/2304.04742">[arXiv]</a>
+              <a href="https://github.com/IDEA-Research/Stable-DINO">[Code]</a>
+              <!-- <a href="https://hornet.ivg-research.xyz/">[Project Page]</a> 
+              <a href="https://mp.weixin.qq.com/s/MyMIPv-bn9wVMLABurjOUA">[中文解读]</a>  -->
+              <br>
+              <p> We propose two simple yet effective
+                modifications by integrating positional metrics to DETR’s
+                classification loss and matching cost, named positionsupervised loss and position-modulated cost to solve the unstable
+                matching problem. And our Stable-DINO achieves <b>63.8AP</b> on COCO test-dev with a Swin-Large backbone.
+              </p>
+            </td>
+          </tr>
 
           <tr>
             <td style="padding:20px;width:30%;max-width:30%" align="center">
@@ -243,9 +278,9 @@
           <tr>
           <td style="padding:20px;width:100%;vertical-align:middle">
             <p><heading>Projects</heading></p>
-            <!-- <p>
-              * indicates equal contribution
-            </p> -->
+            <p>
+               * indicates project lead, # indicates directional lead
+            </p>
           </td>
         </tr>
       </tbody></table>
@@ -258,14 +293,14 @@
             <img style="width:100%;max-width:100%" src="images/Grounded_SAM.png" alt="dise">
           </td>
           <td width="75%" valign="center">
-            <papertitle>Grounded-SAM: Marrying Grounding DINO with Segment Anything & Stable Diffusion - Detect , Segment and Generate Anything with Text Inputs</papertitle>
-            <!-- <br> -->
-            <!-- <strong>Tianhe Ren</strong>,
-            <a href="http://www.lsl.zone/"> Shilong Liu</a>,
-            <a href="https://scholar.google.com.hk/citations?user=B8hPxMQAAAAJ&hl=zh-CN&oi=sra"> Hao Zhang</a>, 
-            <a href="https://fengli-ust.github.io/"> Feng Li</a>, 
-            <a href="https://github.com/L1aoXingyu"> Xingyu Liao </a>, 
-            <a href="https://www.leizhang.org/"> Lei Zhang </a> -->
+            <papertitle>Grounded-SAM: Marrying Grounding DINO with Segment Anything & Stable Diffusion & BLIP & Whisper & ChatGPT - Detect , Segment and Generate Anything with Image, Text and Audio Inputs</papertitle>
+            <br>
+            <strong>Tianhe Ren*</strong>,
+            <a href="http://www.lsl.zone/"> Shilong Liu*</a>,
+            <a href="https://github.com/CiaoHe"> He Cao</a>, 
+            <a href="https://scholar.google.com/citations?user=D4tLSbsAAAAJ&hl=zh-CN"> Kunchang Li</a>, 
+            <a href="https://github.com/tuofeilunhifi"> Jiayu Chen </a>, 
+            <a href="https://www.leizhang.org/"> Lei Zhang#</a>
             <br>
             <!-- <em>Conference on Neural Information Processing Systems (<strong>NeurIPS</strong>)</em>, 2022 -->
             <!-- <br> -->
@@ -275,7 +310,9 @@
             <!-- <a href="https://hornet.ivg-research.xyz/">[Project Page]</a> 
             <a href="https://mp.weixin.qq.com/s/MyMIPv-bn9wVMLABurjOUA">[中文解读]</a>  -->
             <br>
-            <p> <b>Grounded-SAM</b> aims to combining SoTA zero-shot detect, segment and generative models for automatic label and generate data system.</p>
+            <p> <b>Grounded-SAM</b> aims to combining SoTA zero-shot detect, segment and generative models for automatic label and generate data system.
+            <b>Grounded-Segment-Anything achieves more than 5k stars in 5 days. Github trending top-1 project!</b>
+            </p>
           </td>
         </tr>
 
@@ -286,12 +323,12 @@
           <td width="75%" valign="center">
             <papertitle>detrex: research platform for transformer-based instance recognition algorithms.</papertitle>
             <br>
-            <strong>Tianhe Ren</strong>,
-            <a href="http://www.lsl.zone/"> Shilong Liu</a>,
-            <a href="https://scholar.google.com.hk/citations?user=B8hPxMQAAAAJ&hl=zh-CN&oi=sra"> Hao Zhang</a>, 
-            <a href="https://fengli-ust.github.io/"> Feng Li</a>, 
+            <strong>Tianhe Ren*</strong>,
+            <a href="http://www.lsl.zone/"> Shilong Liu*</a>,
+            <a href="https://scholar.google.com.hk/citations?user=B8hPxMQAAAAJ&hl=zh-CN&oi=sra"> Hao Zhang*</a>, 
+            <a href="https://fengli-ust.github.io/"> Feng Li*</a>, 
             <a href="https://github.com/L1aoXingyu"> Xingyu Liao </a>, 
-            <a href="https://www.leizhang.org/"> Lei Zhang </a>
+            <a href="https://www.leizhang.org/"> Lei Zhang# </a>
             <br>
             <!-- <em>Conference on Neural Information Processing Systems (<strong>NeurIPS</strong>)</em>, 2022 -->
             <!-- <br> -->
@@ -313,9 +350,9 @@
           <td width="75%" valign="center">
             <papertitle>LiBai(李白): A Toolbox for Large-Scale Distributed Parallel Training.</papertitle>
             <br>
-            <a href="https://github.com/L1aoXingyu"> Xingyu Liao</a>,
-            <a href="https://github.com/CPFLAME"> Peng Cheng</a>,
-            <strong>Tianhe Ren</strong>,
+            <a href="https://github.com/L1aoXingyu"> Xingyu Liao*#</a>,
+            <a href="https://github.com/CPFLAME"> Peng Cheng*</a>,
+            <strong>Tianhe Ren*</strong>,
             <a href="https://github.com/Ldpe2G"> Depeng Liang</a>,
             <a href="https://github.com/dangkai4u"> Kai Dang</a>, 
             <a href="https://github.com/marigoold"> Yi Wang</a>, 
@@ -340,8 +377,8 @@
           <td width="75%" valign="center">
             <papertitle>SimREC: a lightweight codebase for referring expression comprehension and segmentation.</papertitle>
             <br>
-            <a href="https://luogen1996.github.io/"> Gen Luo</a>,
-            <strong>Tianhe Ren</strong>
+            <a href="https://luogen1996.github.io/"> Gen Luo*#</a>,
+            <strong>Tianhe Ren*</strong>
             <br>
             <!-- <em>Conference on Neural Information Processing Systems (<strong>NeurIPS</strong>)</em>, 2022 -->
             <!-- <br> -->
