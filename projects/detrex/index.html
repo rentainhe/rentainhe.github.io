@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Cheap and Quick: Efficient Vision-Language Instruction Tuning for Large Language Models">
+  <meta name="keywords" content="multimodal chatbot">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LaVIN</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/954/954591.png">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+  <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/3.27.0/gradio.js"></script>
+</head>
+
+<style>
+  .expandable-card .card-text-container {
+    max-height: 200px;
+    overflow-y: hidden;
+    position: relative;
+  }
+
+  .expandable-card.expanded .card-text-container {
+    max-height: none;
+  }
+
+  .expand-btn {
+    position: relative;
+    display: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* margin-top: -20px; */
+    /* justify-content: center; */
+    color: #510c75;
+    border-color: transparent;
+  }
+
+  .expand-btn:hover {
+    background-color: rgba(200, 200, 200, 0.8);
+    text-decoration: none;
+    border-color: transparent;
+    color: #510c75;
+  }
+
+  .expand-btn:focus {
+    outline: none;
+    text-decoration: none;
+  }
+
+  .expandable-card:not(.expanded) .card-text-container:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 1));
+  }
+
+  .expandable-card:not(.expanded) .expand-btn {
+    margin-top: -40px;
+  }
+
+  .card-body {
+    padding-bottom: 5px;
+  }
+
+  .vertical-flex-layout {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .figure-img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .adjustable-font-size {
+    font-size: calc(0.5rem + 2vw);
+  }
+
+  .chat-history {
+    flex-grow: 1;
+    overflow-y: auto;
+    /* overflow-x: hidden; */
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+
+  #gradio pre {
+    background-color: transparent;
+  }
+</style>
+
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">detrex: Benchmarking Detection Transformers</h1>
+            <div class="is-size-5">
+              <!-- Need to modify -->
+              <span class="author-block">
+                <a href="https://rentainhe.github.io/" style="color:#3182bd;font-weight:normal;">Tianhe Ren<sup>1*†</sup></a>,
+              </span>
+              <span class="author-block">
+                <a href="http://www.lsl.zone/" style="color:#3182bd;font-weight:normal;">Shilong Liu<sup>1*</sup></a>,
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=ybRe9GcAAAAJ&hl=zh-CN" style="color:#3182bd;font-weight:normal;">Feng Li<sup>1*</sup></a>,
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=B8hPxMQAAAAJ&hl=zh-CN" style="color:#3182bd;font-weight:normal;">Hao Zhang<sup>1*</sup></a>,
+              </span>
+              <span class="author-block">
+                <a href="https://ailingzeng.site/" style="color:#3182bd;font-weight:normal;">Ailing Zeng<sup>1</sup></a>,
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/yangjie-cv" style="color:#3182bd;font-weight:normal;">Jie Yang<sup>1</sup></a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/L1aoXingyu" style="color:#008AD7;font-weight:normal;">Xingyu Liao<sup>2</sup></a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/JiaDingCN" style="color:#a6bddb;font-weight:normal;">Ding Jia<sup>3</sup></a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/LHY-HongyangLi" style="color:#3182bd;font-weight:normal;">Hongyang Li<sup>1</sup></a>
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/CiaoHe" style="color:#3182bd;font-weight:normal;">He Cao<sup>1</sup></a>
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=mt5mvZ8AAAAJ&hl=en&oi=ao" style="color:#3182bd;font-weight:normal;">Jianan Wang<sup>1</sup></a>
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=U_cvvUwAAAAJ&hl=zh-CN" style="color:#3182bd;font-weight:normal;">Zhaoyang Zeng<sup>1</sup></a>
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=odjSydQAAAAJ&hl=zh-CN" style="color:#3182bd;font-weight:normal;">Xianbiao Qi<sup>1</sup></a>
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=PzyvzksAAAAJ&hl=en" style="color:#43a2ca;font-weight:normal;">Yuhui Yuan<sup>4</sup></a>
+              </span>
+              <span class="author-block">
+                <a href="https://jwyang.github.io/" style="color:#fa9fb5;font-weight:normal;">Jianwei Yang<sup>5</sup></a>
+              </span>
+              <span class="author-block">
+                <a href="https://www.leizhang.org/" style="color:#3182bd;font-weight:normal;">Lei Zhang<sup>1‡</sup></a>
+              </span>
+            </div>
+
+            <br>
+            <!-- Need to modify -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><b style="color:#3182bd; font-weight:normal">&#x25B6 </b> <sup>1</sup>International Digital Economy Academy (IDEA) </b></span>
+              <span class="author-block"><b style="color:#008AD7; font-weight:normal">&#x25B6 </b> <sup>2</sup>University of Science and Technology of China </b></span>
+              <span class="author-block"><b style="color:#a6bddb; font-weight:normal">&#x25B6 </b> <sup>3</sup>Peking University </b></span>
+              <span class="author-block"><b style="color:#43a2ca; font-weight:normal">&#x25B6 </b> <sup>4</sup>Microsoft Research Asia </b></span>
+              <span class="author-block"><b style="color:#fa9fb5; font-weight:normal">&#x25B6 </b> <sup>5</sup>Microsoft Research, Redmond </b></span>
+
+            </div>
+
+            <!-- Need to modify -->
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                 <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2306.07265.pdf" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span> 
+                <span class="link-block">
+                  <a href="https://github.com/IDEA-Research/detrex" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                
+                <span class="link-block">
+                  <a href="https://detrex.readthedocs.io/en/latest/" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-share-square"></i>
+                    </span>
+                    <span>Documentation</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://detrex.readthedocs.io/en/latest/tutorials/Model_Zoo.html" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-database"></i>
+                    </span>
+                    <span>Model Zoo</span>
+                  </a>
+                </span>
+                
+
+                <!-- <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                  </a>
+              </span> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <h4 class="subtitle has-text-centered">
+          In this work, we propose a novel and affordable solution for vision-language instruction tuning, namely Mixture-of-Modality Adaptation (MMA). 
+Particularly, MMA is an end-to-end optimization regime, which connects the image encoder  and LLM via lightweight adapters.   Meanwhile, we also   propose a novel routing algorithm in MMA, which can   help the model automatically shifts the  reasoning paths  for single- and multi-modal instructions.  Based on MMA, we develop a large vision-language instructed model called LaVIN, which demonstrates superior training efficiency and  better reasoning ability  than existing multimodal LLMs in various instruction-following tasks.
+        </h4>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Need to modify -->
+  <!-- <section class="section"  style="background-color:#efeff081"> -->
+    <!-- <div class="container is-max-desktop" id="gradio"> -->
+      <!-- Need to modify -->
+      <!-- <gradio-app src=""></gradio-app> -->
+    <!-- </div> -->
+  <!-- </section> -->
+
+  <!-- <section class="section"  style="background-color:#efeff081">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Recently, a growing interest has been aroused on extending the multi-modal capability of large language
+              models(LLMs), e.g., vision-language(VL) learning, which is regarded as the next milestone of artificial general intelligence.
+              <ol type="1">
+                <li><b>LaVIN</b>. <span style="font-size: 95%;">We present an efficient fine-tune solution for adapting LLMs to VL instructions. In particular, we propose a novel multimodal LLM, namely LaVIN</span></li>
+                <li><b>MMA</b>. <span style="font-size: 95%;">We propose the Mixture-of-Modality Adaption scheme to better adapt LaVIN to different modalities of instruction inputs.</li>
+                <li><b>Performance</b>. <span style="font-size: 95%;">To validate LaVIN, we conduct quantitative experiments on ScienceQA. Experimental results show that LaVIN can achieve on par performance with existing state-of-the-art LLM-based model, i.e., LLaVA, while reducing 71.4% training time and 99.9% storage costs.</li>
+                <li><b>Open-source</b>. <span style="font-size: 95%;">We anonymously release the source code and pre-trained checkpoints associated with this paper.</li>
+              </ol>  
+           </p>
+  
+          </div>
+        </div>
+      </div>
+        
+    </div>
+  </section> -->
+
+ 
+
+<section class="section">
+  <!-- Results. -->
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-six-fifths">
+      <h2 class="title is-3"><img id="painting_icon" width="3%" src="https://cdn-icons-png.flaticon.com/512/5379/5379860.png"> Introduction</h2>
+    </div>
+  </div>
+  <!-- </div> -->
+  <!--/ Results. -->    
+<div class="container is-max-desktop">
+
+  <div class="columns is-centered">
+    <div class="column is-full-width">
+      <div class="content has-text-justified"> 
+        <p>
+          The DEtection TRansformer (DETR) algorithm has received considerable attention in the research community and is gradually emerging as a mainstream approach for object detection and other perception tasks. However, the current field lacks a unified and comprehensive benchmark specifically tailored for DETR-based models. 
+          To address this issue, we develop a unified, highly modular, and lightweight codebase called <b>detrex</b>, which supports a majority of the mainstream DETR-based instance recognition algorithms, covering various fundamental tasks, including object
+          detection, segmentation, and pose estimation. We conduct extensive experiments 
+          under <b>detrex</b> and perform a comprehensive benchmark for DETR-based models. Moreover, we enhance the performance of detection transformers through the refinement of training hyper-parameters, providing strong baselines for supported algorithms. We hope that <b>detrex</b> could offer research communities a standardized and 
+          unified platform to evaluate and compare different DETR-based models while fostering a deeper understanding and driving advancements in DETR-based instance 
+          recognition.
+        </p>
+        <!-- <p>
+          LaVIN consists of a visual backbone and an LLM. To ensure visual backbone better adapt the downstream tasks,
+          we insert adaptation modules before the multi-head attention module of the ViT. For the textual instruction,
+          we process it via word embedding and obtain the textual features. Then, a simple adapter is used to project visual
+          features into word embedding space of the LLM. 
+          
+        </p>
+        <p>
+          In LaVIN, we connect the image encoder and LLM with a set of adaptation modules. Meanwhile,
+          a novel Mixture-of-Modality Adapter is employed to better adapt LaVIN to different modalities.
+          During instruction tuning, the entire multimodal LLM is jointly optimized in an end-to-end manner.
+        </p>
+        <p>
+          Please check out ``LaVIN'' model checkpoint on 
+          <a href="https://anonymous.4open.science/r/LaVIN-1067">[ Anonymous GitHub ]</a>.
+        </p> -->
+      </div>
+      <centering>
+        <div style="text-align: center;">
+          <img id="teaser" width="" src="images/detr_modular_design.png">     
+        </div>
+        <div>
+          <p style="font-family:Times New Roman; text-align: center;"><b>The modular design for DETR-based algorithms under detrex</b>
+        </div>
+      
+      </centering>
+
+      <centering>
+        <div style="text-align: center;">
+          <img id="teaser" width="" src="images/framework_comparison.png">     
+        </div>
+        <div>
+          <p style="font-family:Times New Roman; text-align: center;"><b>The design comparisons of detrex with other codebases</b>
+        </div>
+      
+      </centering>           
+    </div>
+  </div>
+
+
+</section>
+  
+
+
+<section class="section">
+  <!-- Results. -->
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-six-fifths">
+      <h2 class="title is-3"><img id="painting_icon" width="3%" src="images/performance-icon.png"> Main Results</h2>
+    </div>
+  </div>
+
+
+
+  <!-- </div> -->
+  <!--/ Results. -->    
+<div class="container is-max-desktop">
+
+
+  <!-- Grounedtext2img. -->
+  <div style="text-align: center;">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-4"> <img id="painting_icon" width="3%" src="images/SQA-icon.png"><span style="font-size: 100%;"> Benchmarking performance of DETR variants</span> </h2>
+        
+        <div>
+          <img id="painting_icon" width="" src="images/detr_variants_performance.png">
+          <script data-plotly="lichunyuan24:1" sharekey-plotly="v4opE3TJpxqQ08RYsDD4iv" src="https://plotly.com/embed.js" async></script>
+      </div>
+          <p style="font-family:Times New Roman; text-align: center;"><b>Benchmarking the performance of DETR variants with a ResNet-50 backbone on COCO val2017. The best and second-best results are highlighted in bold and underlined, respectively.
+            </b>
+                
+      </div>
+    </div>  
+  </div>
+
+  <div class="container is-max-desktop">
+
+
+    <!-- Grounedtext2img. -->
+    <div style="text-align: center;">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-4"> <img id="painting_icon" width="3%" src="images/SQA-icon.png"><span style="font-size: 100%;"> Benchmarking performance of various backbone</span> </h2>
+          
+          <div>
+            <img id="painting_icon" width="" src="images/benchmark_backbone.png">
+            <script data-plotly="lichunyuan24:1" sharekey-plotly="v4opE3TJpxqQ08RYsDD4iv" src="https://plotly.com/embed.js" async></script>
+        </div>
+            <p style="font-family:Times New Roman; text-align: center;"><b>Comparisons of the effectiveness of various backbones based on DINO-4scale detector.
+              </b>
+                  
+        </div>
+      </div>  
+    </div>
+
+    <div style="text-align: center;">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-4"> <img id="painting_icon" width="3%" src="images/SQA-icon.png"><span style="font-size: 100%;"> Ablation on NMS post-process for DETR</span> </h2>
+          
+          <div>
+            <img id="painting_icon" width="" src="images/ablation_nms.png">
+            <script data-plotly="lichunyuan24:1" sharekey-plotly="v4opE3TJpxqQ08RYsDD4iv" src="https://plotly.com/embed.js" async></script>
+        </div>
+            <p style="font-family:Times New Roman; text-align: center;"><b>Ablation study on DETR variants with NMS post-processing. We set the default NMS threshold to 0.8.
+              </b>
+                  
+        </div>
+      </div>  
+    </div>
+
+
+    <div style="text-align: center;">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-4"> <img id="painting_icon" width="3%" src="images/SQA-icon.png"><span style="font-size: 100%;"> Ablation backbone frozen stages</span> </h2>
+          
+          <div>
+            <img id="painting_icon" width="" src="images/ablation_frozen_stage.png">
+            <script data-plotly="lichunyuan24:1" sharekey-plotly="v4opE3TJpxqQ08RYsDD4iv" src="https://plotly.com/embed.js" async></script>
+        </div>
+            <p style="font-family:Times New Roman; text-align: center;"><b>Ablation study on DINO and DETA with different frozen stages based on ResNet-50
+              backbone. The frozen stage "1" means only freezing the stem in the backbone. Frozen stage "2"
+              means freezing the stem and the first residual stage and stage "0" means there is no frozen layer in
+              the backbone.
+              </b>
+                  
+        </div>
+      </div>  
+    </div>
+
+
+    <div style="text-align: center;">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-4"> <img id="painting_icon" width="3%" src="images/SQA-icon.png"><span style="font-size: 100%;"> Ablation learning rate and hyper-parameters</span> </h2>
+          
+          <div>
+            <img id="painting_icon" width="" src="images/ablation_learning_rate.png">
+            <script data-plotly="lichunyuan24:1" sharekey-plotly="v4opE3TJpxqQ08RYsDD4iv" src="https://plotly.com/embed.js" async></script>
+        </div>
+            <p style="font-family:Times New Roman; text-align: center;"><b>Ablation studies on hyper-parameters for DETR variants. For a fair comparison, we use
+              ResNet-50 as the default backbone and freeze the stem in the backbone.
+              </b>
+                  
+        </div>
+      </div>  
+    </div>
+
+
+    <div style="text-align: center;">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-4"> <img id="painting_icon" width="3%" src="images/SQA-icon.png"><span style="font-size: 100%;"> Comparison between detrex and original implementations</span> </h2>
+          
+          <div>
+            <img id="painting_icon" width="" src="images/comparison_detrex_with_original_implementation.png">
+            <script data-plotly="lichunyuan24:1" sharekey-plotly="v4opE3TJpxqQ08RYsDD4iv" src="https://plotly.com/embed.js" async></script>
+        </div>
+            <p style="font-family:Times New Roman; text-align: center;"><b> Comparison the performance of DETR variants between detrex implementations and their
+              original implementations
+              </b>
+                  
+        </div>
+      </div>  
+    </div>
+
+</section>
+
+
+
+
+
+<!-- </section>
+  <div class="container mt-5">
+    <div class="form-row" style="justify-content: flex-end;">
+      <div class="form-group col-md-1">
+        <div class="col-md-2" style="width: 100%"><label>&nbsp;</label></div>
+        <div class="btn-group" role="group" aria-label="Left and Right Controller"
+          style="width: 100%;align-items: flex-end;justify-content: center;flex-direction: row;display: flex;">
+          <button type="button" class="form-control btn btn-primary" id="prev-question"><i
+              class="material-icons">keyboard_arrow_left</i></button>
+          <button type="button" class="form-control btn btn-primary" id="next-question"><i
+              class="material-icons">keyboard_arrow_right</i></button>
+
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <div class="card mb-4" style="width: 100%; display: flex; align-items: center;">
+
+        <div class="card-body" id="selected-question" style="display: flex; height: 80vh;">
+          <div class="chat-history">
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section> -->
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>
+        @misc{ren2023detrex,
+          title={detrex: Benchmarking Detection Transformers}, 
+          author={Tianhe Ren and Shilong Liu and Feng Li and Hao Zhang and Ailing Zeng and Jie Yang and Xingyu Liao and Ding Jia and Hongyang Li and He Cao and Jianan Wang and Zhaoyang Zeng and Xianbiao Qi and Yuhui Yuan and Jianwei Yang and Lei Zhang},
+          year={2023},
+          eprint={2306.07265},
+          archivePrefix={arXiv},
+          primaryClass={cs.CV}
+        }
+  </code></pre>
+    </div>
+  </section>
+  
+  <!-- <section class="section" id="Acknowledgement">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Acknowledgement</h2>
+      
+      <p>
+        This repo borrows some data and codes from <a
+        href="https://github.com/facebookresearch/llama">LLaMA</a>,  <a href="https://github.com/tatsu-lab/stanford_alpaca">Stanford Alpaca</a>,
+        <a href="https://github.com/haotian-liu/LLaVA">LLaVA</a> and <a href="https://github.com/ZrrSkywalker/LLaMA-Adapter/">LLaMA-Adapter</a>. Thanks for their great works.  
+      </p>
+
+    </div>
+  </section> -->
+
+  <script>
+    // Handle message showing
+    function createChatRow(sender, text, imageSrc) {
+      var article = document.createElement("article");
+      article.className = "media"
+
+      var figure = document.createElement("figure");
+      figure.className = "media-left";
+
+      var span = document.createElement("span");
+      span.className = "icon is-large";
+
+      var icon = document.createElement("i");
+      icon.className = "fas fas fa-2x" + (sender === "User" ? " fa-user " : sender === "LLaVA" ? " fa-robot" : "");
+
+      var media = document.createElement("div");
+      media.className = "media-content";
+
+      var content = document.createElement("div");
+      content.className = "content";
+
+      var para = document.createElement("p");
+
+      // wrap text in pre tag to preserve whitespace and line breaks
+      var pre_text = document.createElement("pre");
+      pre_text.style = "background-color: white; font-size: 18px; font-family: Arial; padding: 0; margin: 0; white-space: pre-wrap; word-wrap: break-word;";
+      var paraText = document.createTextNode(text);
+      pre_text.appendChild(paraText);
+
+      var strong = document.createElement("strong");
+      strong.innerHTML = sender;
+      var br = document.createElement("br");
+
+      para.appendChild(strong);
+      para.appendChild(br);
+      para.appendChild(pre_text);
+
+      // Add image if imageSrc is provided
+      if (imageSrc) {
+        var img = document.createElement("img");
+        img.src = imageSrc;
+        img.style = "max-width: 100%; max-height: 300px;"; // Adjust the style as needed
+        para.appendChild(img);
+      }
+
+      content.appendChild(para);
+      media.appendChild(content);
+      span.appendChild(icon);
+      figure.appendChild(span);
+      if (sender !== "Description") {
+        article.appendChild(figure);
+      };
+      article.appendChild(media);
+      return article;
+    }
+
+    function addMessageToChatHistory(sender, message, imageSrc) {
+      const chatHistory = document.querySelector('.chat-history');
+      const chatRow = createChatRow(sender, message, imageSrc);
+      chatHistory.appendChild(chatRow);
+      chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+
+    function clearChatHistory() {
+      const chatHistory = document.querySelector('.chat-history');
+      chatHistory.innerHTML = "";
+    }
+
+    // 
+//     const conversations = [
+//       {
+//         "description": "monalisa",
+//         "turns": [
+//           // ["Description", "Please read the description and answer the question."],
+//           ["User", "", "/static/images/monalisa.jpg"],
+//           ["User", "Do you know who drew this painting?​"],
+//           ["LLaVA",
+//             "The painting depicts a woman, commonly believed to be Mona Lisa, the famous artwork by Leonardo da Vinci. " +
+//             "It is a portrait painting that showcases the woman's enigmatic smile and has become one of the most famous and iconic art pieces in the world. " +
+//             "The original work is displayed in the Louvre Museum in Paris, and it is known for its intricate details, use of oil paint, and the artist's innovative techniques that contributed to its enduring appeal and mystery.​​"
+//           ]
+//         ]
+//       },
+//       {
+//         "description": "monalisa with dog head",
+//         "turns": [
+//           ["User", "", "/static/images/monalisa-fun.jpg"],
+//           ["User", "Do you know who drew this painting?​"],
+//           ["LLaVA", "The painting depicts a dog in a humorous situation, where it appears to be wearing a woman's dress and standing in front of a landscape. Although the artist of the painting is not explicitly identified, it could be a reference to the famous artist Da Vinci, known for his artistic works, including the Mona Lisa. The painting is likely a creative and comical take on the traditional portrait style, replacing a human figure with a dog dressed in a woman's clothing, making it an interesting and amusing visual piece.​"]
+//         ]
+//       },
+//       {
+//         "description": "Titanic Rose and Jack",
+//         "turns": [
+//           ["User", "", "/static/images/titanic.jpg"],
+//           ["User", "What's the ending of this movie?​​"],
+//           ["LLaVA", "​In the image, a young woman is leaning on a man in front of a beautiful sunset, with both of them standing on a boat. They appear to be enjoying a romantic moment together. The scene suggests that they could be depicted as the characters Jack and Rose from the popular movie Titanic. In the movie, their romance blossoms aboard the fictional ocean liner Titanic, with the pair ultimately sharing a passionate kiss as the ship sinks into the ocean. The ending of the movie is known for its emotional and heartfelt scenes, where the characters are forced to say goodbye to each other as they are separated by the sinking ship. The image evokes a sense of romance and nostalgia, paying tribute to the iconic love story portrayed in the movie Titanic.​"]
+//         ]
+//       },
+//       {
+//         "description": "Fridge",
+//         "turns": [
+//           ["User", "", "/static/images/fridge.jpg"],
+//           ["User", "What are the meals that I can cook with these?​​"],
+//           ["LLaVA", "With the variety of food items stored in the refrigerator, you can prepare several meals. For example, you can create a fruit salad using the strawberries, blueberries, and carrots. Additionally, you can make a delicious smoothie using the fruits and vegetables, which would be a healthy and nutritious snack or breakfast option. The milk and eggs can be used to create various dishes, such as a milk-based smoothie, a baked casserole, or scrambled eggs. The juice can also be used to make a fresh fruit and juice mix or as a refreshing homemade popsicle. The possibilities are vast, and the meals you can create will depend on your preferences and dietary needs.​​"],
+//           ["User", "I would like to do the fruit salad.  Show me the recipe.​"],
+//           ["LLaVA",
+//             `Certainly! Here's a simple fruit salad recipe using the items in your refrigerator:​
+
+// Ingredients:​
+// - 2 cups fresh strawberries, sliced​
+// - 1 cup fresh blueberries​
+// - 1 large carrot, grated​
+// - Juice of half a lemon​
+// - A handful of chopped fresh parsley or mint​
+// - A few ice cubes​
+// - Optional: honey or maple syrup (adjust to taste)​
+
+// Instructions:​
+// 1. In a large bowl, combine the sliced strawberries, blueberries, and carrot. Gently toss them together to mix.​
+// 2. Drizzle the juice of half a lemon over the fruit and vegetables to prevent them from oxidizing and add a refreshing citrus flavor.​
+// 3. Sprinkle the chopped fresh parsley or mint over the fruit and gently toss once more.​
+// 4. If desired, add a drizzle of honey or maple syrup for a touch of sweetness. Adjust the amount according to your taste preferences.​
+// 5. Cover the bowl and refrigerate the fruit salad for at least 30 minutes or up to a few hours. This allows the flavors to meld and creates a more refreshing salad.​
+// 6. Serve the fruit salad in cups or bowls, garnished with a sprinkle of fresh parsley or mint, if desired.​
+
+// This fruit salad recipe is perfect for a healthy snack or side dish, and with the variety of ingredients available in your refrigerator, it should be easy to put together quickly.`]]
+//       },
+//       {
+//         "description": "Beautiful View",
+//         "turns": [
+//           ["User", "", "/static/images/view.jpg"],
+//           ["User", "What are the things I should be cautious about when I visit here?​​"],
+//           ["LLaVA", "When visiting this peaceful location with a pier extending over a serene lake, surrounded by mountains, there are several things to be cautious about. First, pay attention to the weather conditions, as sudden changes in weather, especially strong winds or storms, can cause the water to become rough and pose risks to the stability of the pier. Second, be mindful of the structural integrity of the pier; avoid overloading it with too many people or excessive weight, as this could potentially damage the pier or cause it to collapse. Additionally, be aware of the surrounding wildlife and respect their space; do not harm or disturb them in any way. Finally, if you decide to go fishing, ensure that you adhere to any local fishing regulations and use appropriate fishing techniques to keep the lake ecosystem healthy and maintain the balance of the food chain.​​"],
+//           ["User", "Compose an engaging travel blog post about my trip to this place, highlighting the beautiful sceneries, joyful experiences, and include possible anecdotes.​​"],
+//           ["LLaVA",
+//             `Traveling to this picturesque location with a serene lake and mountains in the background was a refreshing and rejuvenating experience. The pier extending over the calm water provided an excellent vantage point from which to appreciate the breathtaking scenery. As I stood on the pier, I couldn't help but feel a deep connection with nature, taking a moment to soak in the peaceful atmosphere.​
+
+// One of the highlights of my trip was undoubtedly the fishing experience. The area is teeming with life, and I was thrilled to land a sizeable catch, despite the modest size of the lake. The joy of fishing in such a beautiful setting was truly rewarding, and it allowed me to take a break from my busy life and truly immerse myself in the tranquility of nature.​
+
+// While exploring the surrounding area, I came across a family of birds that had built a nest close to the pier, adding to the charm of the location. Interacting with the wildlife and observing their behavior was an enriching experience that I'll cherish for years to come.​
+
+// In conclusion, this idyllic destination provided me with an opportunity to unwind and recharge, surrounded by mesmerizing natural beauty and the gentle sounds of water and wildlife. If you're looking for a serene escape from the hustle and bustle of everyday life, this pier overlooking the lake is the perfect place to find solace and reconnect with nature.`
+//           ]
+//         ]
+//       },
+//     ];
+
+    // The current image index
+    let currentIndex = 0;
+
+    // The function to update the displayed chat history
+    function update_dialog_demo() {
+      // Clear the chat history
+      clearChatHistory();
+
+      for (let i = 0; i < conversations[currentIndex].turns.length; i++) {
+        if (conversations[currentIndex].turns[i].length == 2) {
+          addMessageToChatHistory(conversations[currentIndex].turns[i][0], conversations[currentIndex].turns[i][1]);
+        }
+        else {
+          addMessageToChatHistory(conversations[currentIndex].turns[i][0], conversations[currentIndex].turns[i][1], conversations[currentIndex].turns[i][2]);
+        }
+      }
+
+      // scroll to the top of the chat history
+      document.querySelector('.chat-history').scrollTop = 0;
+    }
+
+    // Initialize the displayed image
+    update_dialog_demo();
+
+    // Event listeners for the buttons
+    document.getElementById('prev-question').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + conversations.length) % conversations.length;
+      update_dialog_demo();
+    });
+
+    document.getElementById('next-question').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % conversations.length;
+      update_dialog_demo();
+    });
+
+
+  </script>
+
+</body>
+
+</html>
