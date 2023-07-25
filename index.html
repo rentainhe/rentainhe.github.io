@@ -31,22 +31,6 @@
                 I am currently working at <a href="https://idea.edu.cn/">The International Digital Economy Academy (IDEA)</a> as Computer Vision Engineer, advised by Prof. <a href="https://www.leizhang.org/"> Lei Zhang </a>. In 2021, I got my bachelor's degree from <a href="https://mac.xmu.edu.cn/">MAC Lab</a> in Xiamen University advised by
                 associate professor <a href="https://scholar.google.com/citations?user=w3_2ep0AAAAJ&hl=zh-CN&oi=ao">Yiyi Zhou</a> and Prof. <a href="https://mac.xmu.edu.cn/rrji/">Rongrong Ji</a>.
               </p>
-              <!-- <p>
-              I am interested in computer vision and deep learning. My current research focuses on:
-                <li style="margin: 5px;" >
-                  <b>Instance-level recognition tasks</b> including Object Detection, Instance Segmentation, Panoptic Segmentation.
-                </li>
-                <li style="margin: 5px;" >
-                  <b>General visual architectures and Multi-Modality tasks</b> including the general visual backbone design, vision-language pretraining
-                  visual grounding, etc.
-                </li>
-                <li style="margin: 5px;" >
-                  <b>Deep generative models</b> including GAN, Diffusion, etc.
-                </li>
-                <li style="margin: 5px;" >
-                  <b>Large language models</b>
-                </li>
-              </p> -->
               <p style="text-align:center">
                 <a href="mailto:rentianhe@idea.edu.cn">Email</a> &nbsp/&nbsp
                 <!-- <a href="files/CV_YongmingRao.pdf">CV</a> &nbsp/&nbsp -->
@@ -67,7 +51,7 @@
             <heading>News</heading>
             <p>
               <li style="margin: 5px;" >
-                <b>2023-07:</b> <a href="https://github.com/IDEA-Research/Stable-DINO">Stable-DINO</a> is accepted to <a href="https://iccv2023.thecvf.com/">ICCV 2023</a>.
+                <b>2023-07:</b> <a href="https://github.com/IDEA-Research/Stable-DINO">Stable-DINO</a> and <a href="https://arxiv.org/abs/2307.12972">DFA3D</a> are accepted to <a href="https://iccv2023.thecvf.com/">ICCV 2023</a>.
               </li>
               <li style="margin: 5px;" >
                 <b>2023-06:</b> Preprint <a href="https://arxiv.org/abs/2306.07265">detrex</a> for benchmarking Transformer-based instance recognition algorithms.
@@ -104,7 +88,66 @@
         </tbody></table>
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+
+          <tr>
+            <td style="padding:20px;width:30%;max-width:30%" align="center">
+              <img style="width:100%;max-width:100%" src="images/DFA3D.png" alt="dise">
+            </td>
+            <td width="75%" valign="center">
+              <a href="https://arxiv.org/abs/2304.04742">
+              <papertitle>DFA3D: 3D Deformable Attention For 2D-to-3D Feature Lifting</papertitle>
+              </a>
+              <br>
+              <a href="https://github.com/LHY-HongyangLi"> Hongyang Li*</a>,
+              <a href="https://scholar.google.com/citations?user=B8hPxMQAAAAJ&hl=zh-CN"> Hao Zhang*</a>,
+              <a href="https://scholar.google.com/citations?user=U_cvvUwAAAAJ&hl=zh-CN&oi=ao">Zhaoyang Zeng</a>, 
+              <a href="http://www.lsl.zone/"> Shilong Liu</a>,
+              <a href="https://scholar.google.com/citations?user=ybRe9GcAAAAJ&hl=zh-CN"> Feng Li</a>, 
+              <strong>Tianhe Ren</strong>, 
+              <a href="https://www.leizhang.org/"> Lei Zhang#</a>
+              <br>
+              <em>ICCV, 2023</em>
+              <br>
+              <div class="paper" id="boundary_iou">
+                <a href="https://arxiv.org/abs/2304.04742">paper</a> /
+                <a href="https://github.com/IDEA-Research/3D-deformable-attention">code</a>
+              </div>
+              <p>A new operator named 3D-Deformable-Attention for 2D to 3D feature lifting.</p>
+            </td>
+          </tr>
           
+          <tr>
+            <td style="padding:20px;width:30%;max-width:30%" align="center">
+              <img style="width:100%;max-width:100%" src="images/stable_dino_new.png" alt="dise">
+            </td>
+            <td width="75%" valign="center">
+              <a href="https://arxiv.org/abs/2304.04742">
+              <papertitle>Detection Transformer with Stable Matching</papertitle>
+              </a>
+              <br>
+              <a href="http://www.lsl.zone/"> Shilong Liu*</a>,
+              <strong>Tianhe Ren*</strong>, 
+              <a href="https://github.com/tuofeilunhifi"> Jiayu Chen*</a>,
+              <a href="https://scholar.google.com/citations?user=U_cvvUwAAAAJ&hl=zh-CN&oi=ao">Zhaoyang Zeng</a>,
+              <a href="https://scholar.google.com/citations?user=B8hPxMQAAAAJ&hl=zh-CN"> Hao Zhang</a>,
+              <a href="https://scholar.google.com/citations?user=ybRe9GcAAAAJ&hl=zh-CN"> Feng Li</a>,  
+              <a href="https://github.com/LHY-HongyangLi"> Hongyang Li</a>,
+              <a href="https://github.com/IDEA-Research/Stable-DINO"> Jun Huang</a>,
+              <a href="https://scholar.google.com/citations?user=dxN1_X0AAAAJ&hl=zh-CN&oi=ao"> Hang Su</a>,
+              <a href="https://ml.cs.tsinghua.edu.cn/~jun/index.shtml"> Jun Zhu</a>,
+              <a href="https://www.leizhang.org/"> Lei Zhang#</a>
+              <br>
+              <em>ICCV, 2023</em>
+              <br>
+              <div class="paper" id="boundary_iou">
+                <a href="https://arxiv.org/abs/2304.04742">paper</a> /
+                <a href="https://github.com/IDEA-Research/Stable-DINO">code</a>
+              </div>
+              <p>A new loss design to address the unstable matching issue caused by multi-path optimization in DETR-based models, achieving 64.8 AP on COCO test-dev without test time augmentation.</p>
+            </td>
+          </tr>
+          
+
           <tr>
             <td style="padding:20px;width:30%;max-width:30%" align="center">
               <img style="width:100%;max-width:100%" src="images/ssam.png" alt="dise">
@@ -204,39 +247,6 @@
 
           <tr>
             <td style="padding:20px;width:30%;max-width:30%" align="center">
-              <img style="width:100%;max-width:100%" src="images/stable_dino_new.png" alt="dise">
-            </td>
-            <td width="75%" valign="center">
-              <a href="https://arxiv.org/abs/2304.04742">
-              <papertitle>Detection Transformer with Stable Matching</papertitle>
-              </a>
-              <br>
-              <a href="http://www.lsl.zone/"> Shilong Liu*</a>,
-              <strong>Tianhe Ren*</strong>, 
-              <a href="https://github.com/tuofeilunhifi"> Jiayu Chen*</a>,
-              <a href="https://scholar.google.com/citations?user=U_cvvUwAAAAJ&hl=zh-CN&oi=ao">Zhaoyang Zeng</a>,
-              <a href="https://scholar.google.com/citations?user=B8hPxMQAAAAJ&hl=zh-CN"> Hao Zhang</a>,
-              <a href="https://scholar.google.com/citations?user=ybRe9GcAAAAJ&hl=zh-CN"> Feng Li</a>,  
-              <a href="https://github.com/LHY-HongyangLi"> Hongyang Li</a>,
-              <a href="https://github.com/IDEA-Research/Stable-DINO"> Jun Huang</a>,
-              <a href="https://scholar.google.com/citations?user=dxN1_X0AAAAJ&hl=zh-CN&oi=ao"> Hang Su</a>,
-              <a href="https://ml.cs.tsinghua.edu.cn/~jun/index.shtml"> Jun Zhu</a>,
-              <a href="https://www.leizhang.org/"> Lei Zhang#</a>
-              <br>
-              <em>ICCV, 2023</em>
-              <br>
-              <font color="#FF0000">Rank Top-2 on COCO Leaderboard (2023.04)</font>
-              <br>
-              <div class="paper" id="boundary_iou">
-                <a href="https://arxiv.org/abs/2304.04742">paper</a> /
-                <a href="https://github.com/IDEA-Research/Stable-DINO">code</a>
-              </div>
-              <p>A new loss design to address the unstable matching issue in DETR-based models, achieving 64.8 AP on COCO test-dev without TTA.</p>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:20px;width:30%;max-width:30%" align="center">
               <img style="width:100%;max-width:100%" src="images/GroundingDINO.png" alt="dise">
             </td>
             <td width="75%" valign="center">
@@ -327,11 +337,6 @@
                 <a href="https://arxiv.org/abs/2212.13771">paper</a>
               </div>
               <p>A plain, non-hierarchical Vision Transformer (ViT) backbone for diffusion models.</p>
-              <!-- <a href="https://arxiv.org/abs/2212.13771">[arXiv]</a>
-              <a href="">[Code Coming Soon]</a> -->
-              <!-- <a href="https://hornet.ivg-research.xyz/">[Project Page]</a> 
-              <a href="https://mp.weixin.qq.com/s/MyMIPv-bn9wVMLABurjOUA">[中文解读]</a>  -->
-              <!-- <p> We are using plain vit structure as diffusion backbone and propose <b>IU-ViT</b> and <b>ASCEND</b> which close the performance gap between ViT and U-Net and we're the first work to explore one-stage large resolution text to image generation.</p> -->
             </td>
           </tr>
 
