@@ -4,7 +4,83 @@
   #full {
     display: none;
   }
-  </style>
+  
+  .research-image-container {
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    width: 100%;
+    height: 170px; /* 固定高度 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer; /* 添加指针样式提示可点击 */
+  }
+  
+  .research-image-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(41, 98, 255, 0.2);
+  }
+  
+  .research-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 10px;
+    transition: all 0.5s ease;
+    object-fit: cover; /* 确保图片填充容器并保持比例 */
+  }
+  
+  .research-image-container:hover .research-image {
+    position: absolute;
+    z-index: 100;
+    object-fit: contain; /* 悬停时显示完整图片 */
+    background-color: white;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    height: auto;
+    max-height: 300px; /* 可以根据需要调整 */
+    transform: scale(1.1);
+  }
+  
+  /* 模态框样式 */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  
+  .modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+  }
+  
+  .close-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  
+  .close-modal:hover {
+    color: #2962ff;
+  }
+</style>
 
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -214,7 +290,9 @@
           
           <tr>
             <td style="padding:20px;width:30%;vertical-align:middle">
-              <img src='images/DINO-X.jpg' alt="game" width="215" height="130" style="border-style: none">
+              <div class="research-image-container">
+                <img src='images/DINO-X.jpg' alt="DINO-X" class="research-image">
+              </div>
             </td>
             <td style="padding:20px;width:70%;vertical-align:top" >
               <a href="https://arxiv.org/abs/2411.14347">
@@ -234,11 +312,10 @@
           </tr>
 
           <tr>
-            <!-- <td style="padding:20px;width:30%;max-width:30%" align="center">
-              <img style="width:100%;max-width:100%" src="images/GroundingDINO.png" alt="dise">
-            </td> -->
             <td style="padding:20px;width:30%;vertical-align:middle">
-              <img src='images/GroundingDINO.png' alt="game" width="215" height="130" style="border-style: none">
+              <div class="research-image-container">
+                <img src='images/GroundingDINO.png' alt="Grounding DINO" class="research-image">
+              </div>
             </td>
             <td style="padding:20px;width:70%;vertical-align:top" >
               <a href="https://arxiv.org/abs/2303.05499">
@@ -272,7 +349,9 @@
 
           <tr>
             <td style="padding:20px;width:30%;max-width:30%" align="center">
-              <img style="width:100%;max-width:100%" src="images/t_rex2.jpg" alt="game" width="180" height="130" style="border-style: none">
+              <div class="research-image-container">
+                <img src="images/t_rex2.jpg" alt="game" width="180" height="130" class="research-image">
+              </div>
             </td>
             <td style="padding:20px;width:75%;vertical-align:top">
               <a href="https://arxiv.org/abs/2311.13596">
@@ -301,7 +380,9 @@
 
           <tr>
             <td style="padding:20px;width:30%;max-width:30%" align="center">
-              <img style="width:100%;max-width:100%" src="images/gd1.5_framework.png" alt="game" width="180" height="130" style="border-style: none">
+              <div class="research-image-container">
+                <img src="images/gd1.5_framework.png" alt="game" width="180" height="130" class="research-image">
+              </div>
             </td>
             <td style="padding:20px;width:75%;vertical-align:top">
               <a href="https://arxiv.org/abs/2405.10300">
@@ -340,7 +421,9 @@
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
           <tr>
             <td style="padding:20px;width:30%;max-width:30%" align="center">
-              <img style="width:100%;max-width:100%" src="images/grounded_sam_paper.png" alt="game" width="180" height="130" style="border-style: none">
+              <div class="research-image-container">
+                <img src="images/grounded_sam_paper.png" alt="game" width="180" height="130" class="research-image">
+              </div>
             </td>
             <td style="padding:20px;width:75%;vertical-align:top">
               <a href="https://arxiv.org/abs/2401.14159">
@@ -381,7 +464,9 @@
 
           <tr>
             <td style="padding:20px;width:30%;max-width:30%" align="center">
-              <img style="width:100%;max-width:100%" src="images/lavin.png" alt="game" width="180" height="130" style="border-style: none">
+              <div class="research-image-container">
+                <img src="images/lavin.png" alt="game" width="180" height="130" class="research-image">
+              </div>
             </td>
             <td style="padding:20px;width:75%;vertical-align:top">
               <a href="https://arxiv.org/abs/2305.15023">
@@ -408,7 +493,9 @@
 
           <tr>
             <td style="padding:20px;width:30%;max-width:30%" align="center">
-              <img style="width:100%;max-width:100%" src="images/stable_dino_new.png" alt="game" width="180" height="130" style="border-style: none">
+              <div class="research-image-container">
+                <img src="images/stable_dino_new.png" alt="game" width="180" height="130" class="research-image">
+              </div>
             </td>
             <td style="padding:20px;width:75%;vertical-align:top">
               <a href="https://arxiv.org/abs/2304.04742">
@@ -439,7 +526,9 @@
 
           <tr>
             <td style="padding:20px;width:30%;max-width:30%" align="center">
-              <img style="width:100%;max-width:100%" src="images/detrex.png" alt="game" width="180" height="130" style="border-style: none">
+              <div class="research-image-container">
+                <img src="images/detrex.png" alt="game" width="180" height="130" class="research-image">
+              </div>
             </td>
             <td style="padding:20px;width:75%;vertical-align:top" >
               <a href="https://arxiv.org/abs/2306.07265">
@@ -476,7 +565,9 @@
 
           <tr>
             <td style="padding:20px;width:30%;max-width:30%" align="center">
-              <img style="width:100%;max-width:100%" src="images/CVPR23_YOSO.png" alt="game" width="180" height="130" style="border-style: none">
+              <div class="research-image-container">
+                <img src="images/CVPR23_YOSO.png" alt="game" width="180" height="130" class="research-image">
+              </div>
             </td>
             <td style="padding:20px;width:75%;vertical-align:top">
               <a href="https://arxiv.org/abs/2303.14651">
@@ -502,7 +593,9 @@
 
           <tr>
             <td style="padding:20px;width:30%;max-width:30%" align="center">
-              <img style="width:100%;max-width:100%" src="images/TRAR.png" alt="game" width="180" height="130" style="border-style: none">
+              <div class="research-image-container">
+                <img src="images/TRAR.png" alt="game" width="180" height="130" class="research-image">
+              </div>
             </td>
             <td style="padding:20px;width:75%;vertical-align:top">
               <a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Zhou_TRAR_Routing_the_Attention_Spans_in_Transformer_for_Visual_Question_ICCV_2021_paper.pdf">
@@ -540,7 +633,9 @@
       <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
         <tr>
           <td style="padding:20px;width:30%;vertical-align:middle">
-            <img src='images/icon.png' alt="IDEA" width="180" height="130" style="border-style:none;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+            <div class="research-image-container">
+              <img src='images/icon.png' alt="IDEA" width="180" height="130" class="research-image">
+            </div>
           </td>
           <td style="padding:20px;width:70%;vertical-align:top">
             <strong style="color:#2962ff;font-size:1.1em;display:block;margin-bottom:10px">International Digital Economy Academy (IDEA)</strong>
@@ -572,7 +667,9 @@
 
         <tr style="margin-top:30px">
           <td style="padding:20px;width:30%;vertical-align:middle">
-            <img src='images/oneflow_logo.png' alt="OneFlow" width="180" height="130" style="border-style:none;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+            <div class="research-image-container">
+              <img src='images/oneflow_logo.png' alt="OneFlow" width="180" height="130" class="research-image">
+            </div>
           </td>
           <td style="padding:20px;width:70%;vertical-align:top">
             <strong style="color:#2962ff;font-size:1.1em;display:block;margin-bottom:10px">OneFlow (SiliconFlow Now)</strong>
@@ -604,7 +701,9 @@
 
         <tr style="margin-top:30px">
           <td style="padding:20px;width:30%;vertical-align:middle">
-            <img src='images/macbanner.jpg' alt="XMU" width="180" height="130" style="border-style:none;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+            <div class="research-image-container">
+              <img src='images/macbanner.jpg' alt="XMU" width="180" height="130" class="research-image">
+            </div>
           </td>
           <td style="padding:20px;width:70%;vertical-align:top">
             <strong style="color:#2962ff;font-size:1.1em;display:block;margin-bottom:10px">MAC Lab, Xiamen University</strong>
@@ -733,5 +832,41 @@
     </td>
   </tr>
 
+  <!-- 在body最后添加模态框结构 -->
+  <div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
+  <!-- 添加JavaScript代码，可放在body结束标签前 -->
+  <script>
+    // 获取模态框元素
+    var modal = document.getElementById("imageModal");
+    var modalImg = document.getElementById("modalImage");
+    
+    // 为所有研究图片添加点击事件
+    document.addEventListener('DOMContentLoaded', function() {
+      var images = document.querySelectorAll('.research-image');
+      images.forEach(function(img) {
+        img.onclick = function() {
+          modal.style.display = "block";
+          modalImg.src = this.src;
+        }
+      });
+      
+      // 点击关闭按钮关闭模态框
+      var closeBtn = document.getElementsByClassName("close-modal")[0];
+      closeBtn.onclick = function() {
+        modal.style.display = "none";
+      }
+      
+      // 点击模态框外部区域也可关闭
+      modal.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    });
+  </script>
 </body>
 </html>
