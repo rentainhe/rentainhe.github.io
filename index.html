@@ -80,6 +80,26 @@
   .close-modal:hover {
     color: #2962ff;
   }
+  
+  /* 论文悬停效果 */
+  .paper-item {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+  }
+  
+  .paper-item:hover {
+    background-color: rgba(41, 98, 255, 0.05);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .paper-item:hover .research-image-container {
+    box-shadow: 0 8px 25px rgba(41, 98, 255, 0.25);
+  }
+  
+  .paper-item:hover papertitle {
+    color: #2962ff;
+  }
 </style>
 
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -288,7 +308,7 @@
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
           
-          <tr>
+          <tr class="paper-item">
             <td style="padding:20px;width:30%;vertical-align:middle">
               <div class="research-image-container">
                 <img src='images/DINO-X.jpg' alt="DINO-X" class="research-image">
@@ -311,7 +331,7 @@
             </td>
           </tr>
 
-          <tr>
+          <tr class="paper-item">
             <td style="padding:20px;width:30%;vertical-align:middle">
               <div class="research-image-container">
                 <img src='images/GroundingDINO.png' alt="Grounding DINO" class="research-image">
@@ -347,7 +367,7 @@
             </td>
           </tr>
 
-          <tr>
+          <tr class="paper-item">
             <td style="padding:20px;width:30%;max-width:30%" align="center">
               <div class="research-image-container">
                 <img src="images/t_rex2.jpg" alt="game" width="180" height="130" class="research-image">
@@ -378,7 +398,7 @@
             </td>
           </tr>
 
-          <tr>
+          <tr class="paper-item">
             <td style="padding:20px;width:30%;max-width:30%" align="center">
               <div class="research-image-container">
                 <img src="images/gd1.5_framework.png" alt="game" width="180" height="130" class="research-image">
@@ -418,455 +438,454 @@
             </td>
           </tr>
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr>
-            <td style="padding:20px;width:30%;max-width:30%" align="center">
-              <div class="research-image-container">
-                <img src="images/grounded_sam_paper.png" alt="game" width="180" height="130" class="research-image">
-              </div>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:top">
-              <a href="https://arxiv.org/abs/2401.14159">
-              <papertitle>Grounded SAM: Assembling Open-World Models for Diverse Visual Tasks</papertitle>
-              </a>
-              <br>
-              <strong>Tianhe Ren*</strong>,
-              <a href="http://lsl.zone/"> Shilong Liu*</a>,
-              <a href="https://ailingzeng.site/"> Ailing Zeng</a>,
-              <a href="https://jinglin7.github.io/"> Jing Lin</a>,
-              <a href="https://andy1621.github.io/"> Kunchang Li</a>,
-              <a href="https://scholar.google.com/citations?user=tLZ2V2kAAAAJ&hl=zh-CN"> He Cao</a>,
-              <a href="https://github.com/tuofeilunhifi"> Jiayu Chen</a>,
-              <a href="https://xinyu1205.github.io/"> Xinyu Huang</a>,
-              <a href="https://yukangchen.com/"> Yukang Chen</a>,
-              <a href="https://scholar.google.com/citations?user=gO4divAAAAAJ&hl=en&oi=sra"> Feng Yan</a>,
-              <a href="https://scholar.google.com/citations?user=U_cvvUwAAAAJ&hl=zh-CN"> Zhaoyang Zeng</a>,
-              <a href="https://haozhang534.github.io/"> Hao Zhang</a>,
-              <a href="https://fengli-ust.github.io/"> Feng Li</a>,
-              <a href="https://yangjie-cv.github.io/"> Jie Yang</a>,
-              <a href="https://scholar.google.com/citations?user=zdgHNmkAAAAJ&hl=zh-CN"> Hongyang Li</a>,
-              <a href="https://mountchicken.github.io/"> Qing Jiang</a>,
-              <a href="https://www.leizhang.org/"> Lei Zhang†</a>
-              <br>
-              International Conference on Computer Vision (<strong>ICCV</strong>) Demo Track, 2023
-              <br>
-              <font color="red"><strong>The 7th Most Influential Paper</strong></font> in the 2024 Computer Vision and Pattern Recognition ArXiv papers by <a href="https://www.paperdigest.org/2024/10/most-influential-arxiv-computer-vision-and-pattern-recognition-papers-2024-10/">PaperDigest</a>.
-              <br>
-              <div class="paper" id="boundary_iou">
-                <a href="https://arxiv.org/abs/2401.14159">Paper</a> /
-                <a href="https://github.com/IDEA-Research/Grounded-Segment-Anything">Code</a> /
-                <a href="https://www.youtube.com/watch?v=oEQYStnF2l8">Video</a> /
-                <a href="https://github.com/IDEA-Research/Grounded-SAM-2">Grounded SAM 2</a>
-              </div>
-            </td>
-          </tr>
-
-
-          <tr>
-            <td style="padding:20px;width:30%;max-width:30%" align="center">
-              <div class="research-image-container">
-                <img src="images/lavin.png" alt="game" width="180" height="130" class="research-image">
-              </div>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:top">
-              <a href="https://arxiv.org/abs/2305.15023">
-              <papertitle>Cheap and Quick: Efficient Vision-Language Instruction Tuning for Large Language Models</papertitle>
-              </a>
-              <br>
-              <a href="https://luogen1996.github.io/"> Gen Luo</a>,
-              <a href="https://scholar.google.com/citations?user=w3_2ep0AAAAJ&hl=zh-CN&oi=ao"> Yiyi Zhou</a>,
-              <strong>Tianhe Ren</strong>,
-              <a href="">Shengxin Chen</a>,
-              <a href="https://sites.google.com/view/xssun"> Xiaoshuai Sun</a>, 
-              <a href="https://mac.xmu.edu.cn/rrji/"> Rongrong Ji†</a>
-              <br>
-              <!-- <em>NeurIPS</em>, 2023 -->
-              Conference on Neural Information Processing Systems (<strong>NeurIPS</strong>), 2023
-              <br>
-              <div class="paper" id="boundary_iou">
-                <a href="https://arxiv.org/abs/2305.15023">Paper</a> /
-                <a href="https://github.com/luogen1996/LaVIN">Code</a> /
-                <a href="https://luogen1996.github.io/lavin/">Website</a>
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:20px;width:30%;max-width:30%" align="center">
-              <div class="research-image-container">
-                <img src="images/stable_dino_new.png" alt="game" width="180" height="130" class="research-image">
-              </div>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:top">
-              <a href="https://arxiv.org/abs/2304.04742">
-              <papertitle>Detection Transformer with Stable Matching</papertitle>
-              </a>
-              <br>
-              <a href="http://www.lsl.zone/"> Shilong Liu*</a>,
-              <strong>Tianhe Ren*</strong>, 
-              <a href="https://github.com/tuofeilunhifi"> Jiayu Chen*</a>,
-              <a href="https://scholar.google.com/citations?user=U_cvvUwAAAAJ&hl=zh-CN&oi=ao">Zhaoyang Zeng</a>,
-              <a href="https://haozhang534.github.io/"> Hao Zhang</a>,
-              <a href="https://scholar.google.com/citations?user=ybRe9GcAAAAJ&hl=zh-CN"> Feng Li</a>,  
-              <a href="https://github.com/LHY-HongyangLi"> Hongyang Li</a>,
-              <a href="https://github.com/IDEA-Research/Stable-DINO"> Jun Huang</a>,
-              <a href="https://scholar.google.com/citations?user=dxN1_X0AAAAJ&hl=zh-CN&oi=ao"> Hang Su</a>,
-              <a href="https://ml.cs.tsinghua.edu.cn/~jun/index.shtml"> Jun Zhu</a>,
-              <a href="https://www.leizhang.org/"> Lei Zhang†</a>
-              <br>
-              <!-- <em>ICCV</em>, 2023 -->
-              International Conference on Computer Vision (<strong>ICCV</strong>), 2023
-              <br>
-              <div class="paper" id="boundary_iou">
-                <a href="https://arxiv.org/abs/2304.04742">Paper</a> /
-                <a href="https://github.com/IDEA-Research/Stable-DINO">Code</a>
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:20px;width:30%;max-width:30%" align="center">
-              <div class="research-image-container">
-                <img src="images/detrex.png" alt="game" width="180" height="130" class="research-image">
-              </div>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:top" >
-              <a href="https://arxiv.org/abs/2306.07265">
-              <papertitle>detrex: Benchmarking Detection Transformers</papertitle>
-              </a>
-              <br>
-              <strong>Tianhe Ren*</strong>,
-              <a href="http://www.lsl.zone/"> Shilong Liu*</a>,
-              <a href="https://scholar.google.com/citations?user=ybRe9GcAAAAJ&hl=zh-CN"> Feng Li*</a>,
-              <a href="https://haozhang534.github.io/"> Hao Zhang*</a>,
-              <a href="https://ailingzeng.site/"> Ailing Zeng</a>,
-              <a href="https://github.com/yangjie-cv"> Jie Yang</a>,
-              <a href="https://github.com/L1aoXingyu"> Xingyu Liao</a>,
-              <a href="https://github.com/JiaDingCN"> Ding Jia</a>,
-              <a href="https://github.com/LHY-HongyangLi"> Hongyang Li</a>,
-              <a href="https://github.com/CiaoHe"> He Cao</a>,
-              <a href="https://scholar.google.com/citations?user=mt5mvZ8AAAAJ&hl=en&oi=ao"> Jianan Wang</a>,
-              <a href="https://scholar.google.com/citations?user=U_cvvUwAAAAJ&hl=zh-CN"> Zhaoyang Zeng</a>,
-              <a href="https://scholar.google.com/citations?user=odjSydQAAAAJ&hl=zh-CN"> Xianbiao Qi</a>,
-              <a href="https://scholar.google.com/citations?user=PzyvzksAAAAJ&hl=en"> Yuhui Yuan</a>,
-              <a href="https://jwyang.github.io/"> Jianwei Yang</a>,
-              <a href="https://www.leizhang.org/"> Lei Zhang†</a>
-              <br>
-              <!-- <em>Tech Report</em>, 2023 -->
-              Tech report, May. 2023
-              <br>
-              <div class="paper" id="boundary_iou">
-                <a href="https://arxiv.org/abs/2306.07265">Paper</a> /
-                <a href="https://github.com/IDEA-Research/detrex">Code</a> /
-                <a href="https://rentainhe.github.io/projects/detrex/">Website</a>
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:20px;width:30%;max-width:30%" align="center">
-              <div class="research-image-container">
-                <img src="images/CVPR23_YOSO.png" alt="game" width="180" height="130" class="research-image">
-              </div>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:top">
-              <a href="https://arxiv.org/abs/2303.14651">
-              <papertitle>You Only Segment Once: Towards Real-Time Panoptic Segmentation</papertitle>
-              </a>
-              <br>
-              <a href="https://hujiecpp.github.io/"> Jie Hu</a>,
-              <a href=""> Linyan Huang</a>,
-              <strong>Tianhe Ren</strong>, 
-              <a href="https://scholar.google.com/citations?user=GToqXScAAAAJ&hl=zh-CN&oi=ao"> Shengchuan Zhang</a>, 
-              <a href="https://scholar.google.com/citations?user=lRSD7PQAAAAJ&hl=zh-CN"> Rongrong Ji</a>, 
-              <a href="https://scholar.google.com/citations?user=iYEcVaAAAAAJ&hl=zh-CN&oi=ao"> Liujuan Cao†</a>,
-              <br>
-              <!-- <em>CVPR</em>, 2023 -->
-              Computer Vision and Pattern Recognition (<strong>CVPR</strong>), 2023
-              <br>
-              <div class="paper" id="boundary_iou">
-                <a href="https://arxiv.org/abs/2303.14651">Paper</a> /
-                <a href="https://github.com/hujiecpp/YOSO">Code</a>
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:20px;width:30%;max-width:30%" align="center">
-              <div class="research-image-container">
-                <img src="images/TRAR.png" alt="game" width="180" height="130" class="research-image">
-              </div>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:top">
-              <a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Zhou_TRAR_Routing_the_Attention_Spans_in_Transformer_for_Visual_Question_ICCV_2021_paper.pdf">
-              <papertitle>TRAR: Routing the Attention Spans in Transformers for Visual Question Answering</papertitle>
-              </a>
-              <br>
-              <a href="https://scholar.google.com/citations?user=w3_2ep0AAAAJ&hl=zh-CN&oi=ao"> Yiyi Zhou</a>,
-              <strong>Tianhe Ren</strong>, 
-              <a href="https://scholar.google.com.hk/citations?user=jkxdiToAAAAJ&hl=zh-CN&oi=ao"> Chaoyang Zhu </a>, 
-              <a href="https://sites.google.com/view/xssun"> Xiaoshuai Sun</a>, 
-              <a href="https://people.ucas.ac.cn/~jzliu?language=en"> Jianzhuang Liu</a>,
-              <a href="https://scholar.google.com/citations?user=k5hVBfMAAAAJ&hl=zh-CN"> Xinghao Ding</a>,
-              <a href="https://scholar.google.com.hk/citations?user=u-8x34cAAAAJ&hl=zh-CN"> Mingliang Xu</a>,
-              <a href="https://mac.xmu.edu.cn/rrji/"> Rongrong Ji†</a>
-              <br>
-              International Conference on Computer Vision (<strong>ICCV</strong>), 2021
-              <br>
-              <div class="paper" id="boundary_iou">
-                <a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Zhou_TRAR_Routing_the_Attention_Spans_in_Transformer_for_Visual_Question_ICCV_2021_paper.pdf">Paper</a> /
-                <a href="https://github.com/rentainhe/TRAR-VQA">Code</a>
-              </div>
-            </td>
-          </tr>
-
-        </tbody></table>
-  
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr>
-          <td style="padding:20px;width:100%;vertical-align:middle">
-            <heading>Work Experiences</heading>
+        <tr class="paper-item">
+          <td style="padding:20px;width:30%;max-width:30%" align="center">
+            <div class="research-image-container">
+              <img src="images/grounded_sam_paper.png" alt="game" width="180" height="130" class="research-image">
+            </div>
+          </td>
+          <td style="padding:20px;width:75%;vertical-align:top">
+            <a href="https://arxiv.org/abs/2401.14159">
+            <papertitle>Grounded SAM: Assembling Open-World Models for Diverse Visual Tasks</papertitle>
+            </a>
+            <br>
+            <strong>Tianhe Ren*</strong>,
+            <a href="http://lsl.zone/"> Shilong Liu*</a>,
+            <a href="https://ailingzeng.site/"> Ailing Zeng</a>,
+            <a href="https://jinglin7.github.io/"> Jing Lin</a>,
+            <a href="https://andy1621.github.io/"> Kunchang Li</a>,
+            <a href="https://scholar.google.com/citations?user=tLZ2V2kAAAAJ&hl=zh-CN"> He Cao</a>,
+            <a href="https://github.com/tuofeilunhifi"> Jiayu Chen</a>,
+            <a href="https://xinyu1205.github.io/"> Xinyu Huang</a>,
+            <a href="https://yukangchen.com/"> Yukang Chen</a>,
+            <a href="https://scholar.google.com/citations?user=gO4divAAAAAJ&hl=en&oi=sra"> Feng Yan</a>,
+            <a href="https://scholar.google.com/citations?user=U_cvvUwAAAAJ&hl=zh-CN"> Zhaoyang Zeng</a>,
+            <a href="https://haozhang534.github.io/"> Hao Zhang</a>,
+            <a href="https://fengli-ust.github.io/"> Feng Li</a>,
+            <a href="https://yangjie-cv.github.io/"> Jie Yang</a>,
+            <a href="https://scholar.google.com/citations?user=zdgHNmkAAAAJ&hl=zh-CN"> Hongyang Li</a>,
+            <a href="https://mountchicken.github.io/"> Qing Jiang</a>,
+            <a href="https://www.leizhang.org/"> Lei Zhang†</a>
+            <br>
+            International Conference on Computer Vision (<strong>ICCV</strong>) Demo Track, 2023
+            <br>
+            <font color="red"><strong>The 7th Most Influential Paper</strong></font> in the 2024 Computer Vision and Pattern Recognition ArXiv papers by <a href="https://www.paperdigest.org/2024/10/most-influential-arxiv-computer-vision-and-pattern-recognition-papers-2024-10/">PaperDigest</a>.
+            <br>
+            <div class="paper" id="boundary_iou">
+              <a href="https://arxiv.org/abs/2401.14159">Paper</a> /
+              <a href="https://github.com/IDEA-Research/Grounded-Segment-Anything">Code</a> /
+              <a href="https://www.youtube.com/watch?v=oEQYStnF2l8">Video</a> /
+              <a href="https://github.com/IDEA-Research/Grounded-SAM-2">Grounded SAM 2</a>
+            </div>
           </td>
         </tr>
+
+
+        <tr class="paper-item">
+          <td style="padding:20px;width:30%;max-width:30%" align="center">
+            <div class="research-image-container">
+              <img src="images/lavin.png" alt="game" width="180" height="130" class="research-image">
+            </div>
+          </td>
+          <td style="padding:20px;width:75%;vertical-align:top">
+            <a href="https://arxiv.org/abs/2305.15023">
+            <papertitle>Cheap and Quick: Efficient Vision-Language Instruction Tuning for Large Language Models</papertitle>
+            </a>
+            <br>
+            <a href="https://luogen1996.github.io/"> Gen Luo</a>,
+            <a href="https://scholar.google.com/citations?user=w3_2ep0AAAAJ&hl=zh-CN&oi=ao"> Yiyi Zhou</a>,
+            <strong>Tianhe Ren</strong>,
+            <a href="">Shengxin Chen</a>,
+            <a href="https://sites.google.com/view/xssun"> Xiaoshuai Sun</a>, 
+            <a href="https://mac.xmu.edu.cn/rrji/"> Rongrong Ji†</a>
+            <br>
+            <!-- <em>NeurIPS</em>, 2023 -->
+            Conference on Neural Information Processing Systems (<strong>NeurIPS</strong>), 2023
+            <br>
+            <div class="paper" id="boundary_iou">
+              <a href="https://arxiv.org/abs/2305.15023">Paper</a> /
+              <a href="https://github.com/luogen1996/LaVIN">Code</a> /
+              <a href="https://luogen1996.github.io/lavin/">Website</a>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="paper-item">
+          <td style="padding:20px;width:30%;max-width:30%" align="center">
+            <div class="research-image-container">
+              <img src="images/stable_dino_new.png" alt="game" width="180" height="130" class="research-image">
+            </div>
+          </td>
+          <td style="padding:20px;width:75%;vertical-align:top">
+            <a href="https://arxiv.org/abs/2304.04742">
+            <papertitle>Detection Transformer with Stable Matching</papertitle>
+            </a>
+            <br>
+            <a href="http://www.lsl.zone/"> Shilong Liu*</a>,
+            <strong>Tianhe Ren*</strong>, 
+            <a href="https://github.com/tuofeilunhifi"> Jiayu Chen*</a>,
+            <a href="https://scholar.google.com/citations?user=U_cvvUwAAAAJ&hl=zh-CN&oi=ao">Zhaoyang Zeng</a>,
+            <a href="https://haozhang534.github.io/"> Hao Zhang</a>,
+            <a href="https://scholar.google.com/citations?user=ybRe9GcAAAAJ&hl=zh-CN"> Feng Li</a>,  
+            <a href="https://github.com/LHY-HongyangLi"> Hongyang Li</a>,
+            <a href="https://github.com/IDEA-Research/Stable-DINO"> Jun Huang</a>,
+            <a href="https://scholar.google.com/citations?user=dxN1_X0AAAAJ&hl=zh-CN&oi=ao"> Hang Su</a>,
+            <a href="https://ml.cs.tsinghua.edu.cn/~jun/index.shtml"> Jun Zhu</a>,
+            <a href="https://www.leizhang.org/"> Lei Zhang†</a>
+            <br>
+            <!-- <em>ICCV</em>, 2023 -->
+            International Conference on Computer Vision (<strong>ICCV</strong>), 2023
+            <br>
+            <div class="paper" id="boundary_iou">
+              <a href="https://arxiv.org/abs/2304.04742">Paper</a> /
+              <a href="https://github.com/IDEA-Research/Stable-DINO">Code</a>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="paper-item">
+          <td style="padding:20px;width:30%;max-width:30%" align="center">
+            <div class="research-image-container">
+              <img src="images/detrex.png" alt="game" width="180" height="130" class="research-image">
+            </div>
+          </td>
+          <td style="padding:20px;width:75%;vertical-align:top" >
+            <a href="https://arxiv.org/abs/2306.07265">
+            <papertitle>detrex: Benchmarking Detection Transformers</papertitle>
+            </a>
+            <br>
+            <strong>Tianhe Ren*</strong>,
+            <a href="http://www.lsl.zone/"> Shilong Liu*</a>,
+            <a href="https://scholar.google.com/citations?user=ybRe9GcAAAAJ&hl=zh-CN"> Feng Li*</a>,
+            <a href="https://haozhang534.github.io/"> Hao Zhang*</a>,
+            <a href="https://ailingzeng.site/"> Ailing Zeng</a>,
+            <a href="https://github.com/yangjie-cv"> Jie Yang</a>,
+            <a href="https://github.com/L1aoXingyu"> Xingyu Liao</a>,
+            <a href="https://github.com/JiaDingCN"> Ding Jia</a>,
+            <a href="https://github.com/LHY-HongyangLi"> Hongyang Li</a>,
+            <a href="https://github.com/CiaoHe"> He Cao</a>,
+            <a href="https://scholar.google.com/citations?user=mt5mvZ8AAAAJ&hl=en&oi=ao"> Jianan Wang</a>,
+            <a href="https://scholar.google.com/citations?user=U_cvvUwAAAAJ&hl=zh-CN"> Zhaoyang Zeng</a>,
+            <a href="https://scholar.google.com/citations?user=odjSydQAAAAJ&hl=zh-CN"> Xianbiao Qi</a>,
+            <a href="https://scholar.google.com/citations?user=PzyvzksAAAAJ&hl=en"> Yuhui Yuan</a>,
+            <a href="https://jwyang.github.io/"> Jianwei Yang</a>,
+            <a href="https://www.leizhang.org/"> Lei Zhang†</a>
+            <br>
+            <!-- <em>Tech Report</em>, 2023 -->
+            Tech report, May. 2023
+            <br>
+            <div class="paper" id="boundary_iou">
+              <a href="https://arxiv.org/abs/2306.07265">Paper</a> /
+              <a href="https://github.com/IDEA-Research/detrex">Code</a> /
+              <a href="https://rentainhe.github.io/projects/detrex/">Website</a>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="paper-item">
+          <td style="padding:20px;width:30%;max-width:30%" align="center">
+            <div class="research-image-container">
+              <img src="images/CVPR23_YOSO.png" alt="game" width="180" height="130" class="research-image">
+            </div>
+          </td>
+          <td style="padding:20px;width:75%;vertical-align:top">
+            <a href="https://arxiv.org/abs/2303.14651">
+            <papertitle>You Only Segment Once: Towards Real-Time Panoptic Segmentation</papertitle>
+            </a>
+            <br>
+            <a href="https://hujiecpp.github.io/"> Jie Hu</a>,
+            <a href=""> Linyan Huang</a>,
+            <strong>Tianhe Ren</strong>, 
+            <a href="https://scholar.google.com/citations?user=GToqXScAAAAJ&hl=zh-CN&oi=ao"> Shengchuan Zhang</a>, 
+            <a href="https://scholar.google.com/citations?user=lRSD7PQAAAAJ&hl=zh-CN"> Rongrong Ji</a>, 
+            <a href="https://scholar.google.com/citations?user=iYEcVaAAAAAJ&hl=zh-CN&oi=ao"> Liujuan Cao†</a>,
+            <br>
+            <!-- <em>CVPR</em>, 2023 -->
+            Computer Vision and Pattern Recognition (<strong>CVPR</strong>), 2023
+            <br>
+            <div class="paper" id="boundary_iou">
+              <a href="https://arxiv.org/abs/2303.14651">Paper</a> /
+              <a href="https://github.com/hujiecpp/YOSO">Code</a>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="paper-item">
+          <td style="padding:20px;width:30%;max-width:30%" align="center">
+            <div class="research-image-container">
+              <img src="images/TRAR.png" alt="game" width="180" height="130" class="research-image">
+            </div>
+          </td>
+          <td style="padding:20px;width:75%;vertical-align:top">
+            <a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Zhou_TRAR_Routing_the_Attention_Spans_in_Transformer_for_Visual_Question_ICCV_2021_paper.pdf">
+            <papertitle>TRAR: Routing the Attention Spans in Transformers for Visual Question Answering</papertitle>
+            </a>
+            <br>
+            <a href="https://scholar.google.com/citations?user=w3_2ep0AAAAJ&hl=zh-CN&oi=ao"> Yiyi Zhou</a>,
+            <strong>Tianhe Ren</strong>, 
+            <a href="https://scholar.google.com.hk/citations?user=jkxdiToAAAAJ&hl=zh-CN&oi=ao"> Chaoyang Zhu </a>, 
+            <a href="https://sites.google.com/view/xssun"> Xiaoshuai Sun</a>, 
+            <a href="https://people.ucas.ac.cn/~jzliu?language=en"> Jianzhuang Liu</a>,
+            <a href="https://scholar.google.com/citations?user=k5hVBfMAAAAJ&hl=zh-CN"> Xinghao Ding</a>,
+            <a href="https://scholar.google.com.hk/citations?user=u-8x34cAAAAJ&hl=zh-CN"> Mingliang Xu</a>,
+            <a href="https://mac.xmu.edu.cn/rrji/"> Rongrong Ji†</a>
+            <br>
+            International Conference on Computer Vision (<strong>ICCV</strong>), 2021
+            <br>
+            <div class="paper" id="boundary_iou">
+              <a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Zhou_TRAR_Routing_the_Attention_Spans_in_Transformer_for_Visual_Question_ICCV_2021_paper.pdf">Paper</a> /
+              <a href="https://github.com/rentainhe/TRAR-VQA">Code</a>
+            </div>
+          </td>
+        </tr>
+
       </tbody></table>
 
       <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
         <tr>
-          <td style="padding:20px;width:30%;vertical-align:middle">
-            <div class="research-image-container">
-              <img src='images/icon.png' alt="IDEA" width="180" height="130" class="research-image">
-            </div>
-          </td>
-          <td style="padding:20px;width:70%;vertical-align:top">
-            <strong style="color:#2962ff;font-size:1.1em;display:block;margin-bottom:10px">International Digital Economy Academy (IDEA)</strong>
-            
-            <papertitle style="color:#333;font-size:1.05em;display:block;margin-bottom:14px;line-height:1.4">Senior Computer Vision Engineer and Researcher</papertitle>
-            
-            <span style="color:#666;display:block;margin-bottom:10px;line-height:1.5">
-              <i class="fas fa-calendar-alt"></i>
-              2022 - Present
-            </span>
-            
-            <span style="color:#666;display:block;margin-bottom:16px;line-height:1.5">
-              <i class="fas fa-user"></i>
-              Advisor: <a href="https://www.leizhang.org/" style="color:#2962ff">Lei Zhang</a>
-            </span>
-            
-            <ul style="list-style-type:none;padding-left:0;margin-top:14px">
-              <li style="margin:10px 0;padding-left:20px;position:relative;line-height:1.6">
-                <span style="position:absolute;left:0;color:#2962ff">•</span>
-                Leading research and development of vision foundation models
-              </li>
-              <li style="margin:10px 0;padding-left:20px;position:relative;line-height:1.6">
-                <span style="position:absolute;left:0;color:#2962ff">•</span>
-                Developed high-impact open-source projects
-              </li>
-            </ul>
-          </td>
-        </tr>
+        <td style="padding:20px;width:100%;vertical-align:middle">
+          <heading>Work Experiences</heading>
+        </td>
+      </tr>
+    </tbody></table>
 
-        <tr style="margin-top:30px">
-          <td style="padding:20px;width:30%;vertical-align:middle">
-            <div class="research-image-container">
-              <img src='images/oneflow_logo.png' alt="OneFlow" width="180" height="130" class="research-image">
-            </div>
-          </td>
-          <td style="padding:20px;width:70%;vertical-align:top">
-            <strong style="color:#2962ff;font-size:1.1em;display:block;margin-bottom:10px">OneFlow (SiliconFlow Now)</strong>
-            
-            <papertitle style="color:#333;font-size:1.05em;display:block;margin-bottom:14px;line-height:1.4">Computer Vision Engineer</papertitle>
-            
-            <span style="color:#666;display:block;margin-bottom:10px;line-height:1.5">
-              <i class="fas fa-calendar-alt"></i>
-              2021 - 2022
-            </span>
-            
-            <span style="color:#666;display:block;margin-bottom:16px;line-height:1.5">
-              <i class="fas fa-user"></i>
-              Advisor: <a href="https://scholar.google.com/citations?user=HtfAR1IAAAAJ&hl=en" style="color:#2962ff">Jinhui Yuan</a>
-            </span>
-            
-            <ul style="list-style-type:none;padding-left:0;margin-top:14px">
-              <li style="margin:10px 0;padding-left:20px;position:relative;line-height:1.6">
-                <span style="position:absolute;left:0;color:#2962ff">•</span>
-                Develop deep learning frameworks and computer vision models
-              </li>
-              <li style="margin:10px 0;padding-left:20px;position:relative;line-height:1.6">
-                <span style="position:absolute;left:0;color:#2962ff">•</span>
-                Contribute to OneFlow's computer vision ecosystem
-              </li>
-            </ul>
-          </td>
-        </tr>
+    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <tr>
+        <td style="padding:20px;width:30%;vertical-align:middle">
+          <div class="research-image-container">
+            <img src='images/icon.png' alt="IDEA" width="180" height="130" class="research-image">
+          </div>
+        </td>
+        <td style="padding:20px;width:70%;vertical-align:top">
+          <strong style="color:#2962ff;font-size:1.1em;display:block;margin-bottom:10px">International Digital Economy Academy (IDEA)</strong>
+          
+          <papertitle style="color:#333;font-size:1.05em;display:block;margin-bottom:14px;line-height:1.4">Senior Computer Vision Engineer and Researcher</papertitle>
+          
+          <span style="color:#666;display:block;margin-bottom:10px;line-height:1.5">
+            <i class="fas fa-calendar-alt"></i>
+            2022 - Present
+          </span>
+          
+          <span style="color:#666;display:block;margin-bottom:16px;line-height:1.5">
+            <i class="fas fa-user"></i>
+            Advisor: <a href="https://www.leizhang.org/" style="color:#2962ff">Lei Zhang</a>
+          </span>
+          
+          <ul style="list-style-type:none;padding-left:0;margin-top:14px">
+            <li style="margin:10px 0;padding-left:20px;position:relative;line-height:1.6">
+              <span style="position:absolute;left:0;color:#2962ff">•</span>
+              Leading research and development of vision foundation models
+            </li>
+            <li style="margin:10px 0;padding-left:20px;position:relative;line-height:1.6">
+              <span style="position:absolute;left:0;color:#2962ff">•</span>
+              Developed high-impact open-source projects
+            </li>
+          </ul>
+        </td>
+      </tr>
 
-        <tr style="margin-top:30px">
-          <td style="padding:20px;width:30%;vertical-align:middle">
-            <div class="research-image-container">
-              <img src='images/macbanner.jpg' alt="XMU" width="180" height="130" class="research-image">
-            </div>
-          </td>
-          <td style="padding:20px;width:70%;vertical-align:top">
-            <strong style="color:#2962ff;font-size:1.1em;display:block;margin-bottom:10px">MAC Lab, Xiamen University</strong>
-            
-            <papertitle style="color:#333;font-size:1.05em;display:block;margin-bottom:14px;line-height:1.4">Research Assistant</papertitle>
-            
-            <span style="color:#666;display:block;margin-bottom:10px;line-height:1.5">
-              <i class="fas fa-calendar-alt"></i>
-              2019 - 2021
-            </span>
-            
-            <span style="color:#666;display:block;margin-bottom:16px;line-height:1.5">
-              <i class="fas fa-user"></i>
-              Advisors: <a href="https://scholar.google.com/citations?user=w3_2ep0AAAAJ&hl=zh-CN&oi=ao" style="color:#2962ff">Yiyi Zhou</a> and 
-              <a href="https://mac.xmu.edu.cn/rrji/" style="color:#2962ff">Rongrong Ji</a>
-            </span>
-            
-            <ul style="list-style-type:none;padding-left:0;margin-top:14px">
-              <li style="margin:10px 0;padding-left:20px;position:relative;line-height:1.6">
-                <span style="position:absolute;left:0;color:#2962ff">•</span>
-                Conducted research on multi-modal learning
-              </li>
-            </ul>
-          </td>
-        </tr>
-      </tbody></table>
+      <tr style="margin-top:30px">
+        <td style="padding:20px;width:30%;vertical-align:middle">
+          <div class="research-image-container">
+            <img src='images/oneflow_logo.png' alt="OneFlow" width="180" height="130" class="research-image">
+          </div>
+        </td>
+        <td style="padding:20px;width:70%;vertical-align:top">
+          <strong style="color:#2962ff;font-size:1.1em;display:block;margin-bottom:10px">OneFlow (SiliconFlow Now)</strong>
+          
+          <papertitle style="color:#333;font-size:1.05em;display:block;margin-bottom:14px;line-height:1.4">Computer Vision Engineer</papertitle>
+          
+          <span style="color:#666;display:block;margin-bottom:10px;line-height:1.5">
+            <i class="fas fa-calendar-alt"></i>
+            2021 - 2022
+          </span>
+          
+          <span style="color:#666;display:block;margin-bottom:16px;line-height:1.5">
+            <i class="fas fa-user"></i>
+            Advisor: <a href="https://scholar.google.com/citations?user=HtfAR1IAAAAJ&hl=en" style="color:#2962ff">Jinhui Yuan</a>
+          </span>
+          
+          <ul style="list-style-type:none;padding-left:0;margin-top:14px">
+            <li style="margin:10px 0;padding-left:20px;position:relative;line-height:1.6">
+              <span style="position:absolute;left:0;color:#2962ff">•</span>
+              Develop deep learning frameworks and computer vision models
+            </li>
+            <li style="margin:10px 0;padding-left:20px;position:relative;line-height:1.6">
+              <span style="position:absolute;left:0;color:#2962ff">•</span>
+              Contribute to OneFlow's computer vision ecosystem
+            </li>
+          </ul>
+        </td>
+      </tr>
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr>
-          <td style="padding:20px;width:100%;vertical-align:middle">
-            <heading>Professional Services</heading>
-            <!-- Conference Reviewer Section -->
-            <div style="margin:20px 0;padding:20px;background:linear-gradient(to right,#f8f9fa,white);border-radius:10px;box-shadow:0 2px 5px rgba(0,0,0,0.05)">
-              <h3 style="color:#2962ff;font-size:1.2em;margin-bottom:15px;display:flex;align-items:center">
-                <i class="fas fa-search" style="margin-right:10px"></i>Conference Reviewer
-              </h3>
-              
-              <!-- 2025 -->
-              <div style="margin:15px 0">
-                <h4 style="color:#666;font-size:1.1em;margin-bottom:10px">2025</h4>
-                <ul style="list-style:none;padding-left:20px">
-                  <li style="margin:8px 0;padding-left:15px;position:relative;display:flex;align-items:center">
-                    <span style="position:absolute;left:0;color:#2962ff">•</span>
-                    <span>International Conference on Learning Representations (<b>ICLR</b>)</span>
-                  </li>
-                  <li style="margin:8px 0;padding-left:15px;position:relative;display:flex;align-items:center">
-                    <span style="position:absolute;left:0;color:#2962ff">•</span>
-                    <span>Artificial Intelligence and Statistics (<b>AISTATS</b>)</span>
-                  </li>
-                  <li style="margin:8px 0;padding-left:15px;position:relative;display:flex;align-items:center">
-                    <span style="position:absolute;left:0;color:#2962ff">•</span>
-                    <span>Computer Vision and Pattern Recognition (<b>CVPR</b>)</span>
-                  </li>
-                  <li style="margin:8px 0;padding-left:15px;position:relative;display:flex;align-items:center">
-                    <span style="position:absolute;left:0;color:#2962ff">•</span>
-                    <span>International Conference on Machine Learning (<b>ICML</b>)</span>
-                  </li>
-                  <li style="margin:8px 0;padding-left:15px;position:relative;display:flex;align-items:center">
-                    <span style="position:absolute;left:0;color:#2962ff">•</span>
-                    <span>International Conference on Computer Vision (<b>ICCV</b>)</span>
-                  </li>
-                  <li style="margin:8px 0;padding-left:15px;position:relative;display:flex;align-items:center">
-                    <span style="position:absolute;left:0;color:#2962ff">•</span>
-                    <span>Conference on Neural Information Processing Systems (<b>NeurIPS</b>)</span>
-                  </li>
-                </ul>
-              </div>
+      <tr style="margin-top:30px">
+        <td style="padding:20px;width:30%;vertical-align:middle">
+          <div class="research-image-container">
+            <img src='images/macbanner.jpg' alt="XMU" width="180" height="130" class="research-image">
+          </div>
+        </td>
+        <td style="padding:20px;width:70%;vertical-align:top">
+          <strong style="color:#2962ff;font-size:1.1em;display:block;margin-bottom:10px">MAC Lab, Xiamen University</strong>
+          
+          <papertitle style="color:#333;font-size:1.05em;display:block;margin-bottom:14px;line-height:1.4">Research Assistant</papertitle>
+          
+          <span style="color:#666;display:block;margin-bottom:10px;line-height:1.5">
+            <i class="fas fa-calendar-alt"></i>
+            2019 - 2021
+          </span>
+          
+          <span style="color:#666;display:block;margin-bottom:16px;line-height:1.5">
+            <i class="fas fa-user"></i>
+            Advisors: <a href="https://scholar.google.com/citations?user=w3_2ep0AAAAJ&hl=zh-CN&oi=ao" style="color:#2962ff">Yiyi Zhou</a> and 
+            <a href="https://mac.xmu.edu.cn/rrji/" style="color:#2962ff">Rongrong Ji</a>
+          </span>
+          
+          <ul style="list-style-type:none;padding-left:0;margin-top:14px">
+            <li style="margin:10px 0;padding-left:20px;position:relative;line-height:1.6">
+              <span style="position:absolute;left:0;color:#2962ff">•</span>
+              Conducted research on multi-modal learning
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody></table>
 
-              <!-- 2024 -->
-              <div style="margin:15px 0">
-                <h4 style="color:#666;font-size:1.1em;margin-bottom:10px">2024</h4>
-                <ul style="list-style:none;padding-left:20px">
-                  <li style="margin:8px 0;padding-left:15px;position:relative;display:flex;align-items:center">
-                    <span style="position:absolute;left:0;color:#2962ff">•</span>
-                    <span>Computer Vision in the Wild (<b>CVinW</b>) Workshop at CVPR</span>
-                  </li>
-                  <li style="margin:8px 0;padding-left:15px;position:relative;display:flex;align-items:center">
-                    <span style="position:absolute;left:0;color:#2962ff">•</span>
-                    <span>European Conference on Computer Vision (<b>ECCV</b>)</span>
-                  </li>
-                  <li style="margin:8px 0;padding-left:15px;position:relative;display:flex;align-items:center">
-                    <span style="position:absolute;left:0;color:#2962ff">•</span>
-                    <span>Conference on Neural Information Processing Systems (<b>NeurIPS</b>)</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Organizer Section -->
-            <div style="margin:20px 0;padding:20px;background:linear-gradient(to right,#f8f9fa,white);border-radius:10px;box-shadow:0 2px 5px rgba(0,0,0,0.05)">
-              <h3 style="color:#2962ff;font-size:1.2em;margin-bottom:15px;display:flex;align-items:center">
-                <i class="fas fa-users" style="margin-right:10px"></i>Workshop Organizer
-              </h3>
+      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+        <tr>
+        <td style="padding:20px;width:100%;vertical-align:middle">
+          <heading>Professional Services</heading>
+          <!-- Conference Reviewer Section -->
+          <div style="margin:20px 0;padding:20px;background:linear-gradient(to right,#f8f9fa,white);border-radius:10px;box-shadow:0 2px 5px rgba(0,0,0,0.05)">
+            <h3 style="color:#2962ff;font-size:1.2em;margin-bottom:15px;display:flex;align-items:center">
+              <i class="fas fa-search" style="margin-right:10px"></i>Conference Reviewer
+            </h3>
+            
+            <!-- 2025 -->
+            <div style="margin:15px 0">
+              <h4 style="color:#666;font-size:1.1em;margin-bottom:10px">2025</h4>
               <ul style="list-style:none;padding-left:20px">
                 <li style="margin:8px 0;padding-left:15px;position:relative;display:flex;align-items:center">
                   <span style="position:absolute;left:0;color:#2962ff">•</span>
-                  <span>Computer Vision in the Wild (<b>CVinW</b>) Workshop at CVPR 2025</span>
+                  <span>International Conference on Learning Representations (<b>ICLR</b>)</span>
                 </li>
                 <li style="margin:8px 0;padding-left:15px;position:relative;display:flex;align-items:center">
                   <span style="position:absolute;left:0;color:#2962ff">•</span>
-                  <span>Computer Vision in the Wild (<b>CVinW</b>) Workshop at CVPR 2023</span>
+                  <span>Artificial Intelligence and Statistics (<b>AISTATS</b>)</span>
+                </li>
+                <li style="margin:8px 0;padding-left:15px;position:relative;display:flex;align-items:center">
+                  <span style="position:absolute;left:0;color:#2962ff">•</span>
+                  <span>Computer Vision and Pattern Recognition (<b>CVPR</b>)</span>
+                </li>
+                <li style="margin:8px 0;padding-left:15px;position:relative;display:flex;align-items:center">
+                  <span style="position:absolute;left:0;color:#2962ff">•</span>
+                  <span>International Conference on Machine Learning (<b>ICML</b>)</span>
+                </li>
+                <li style="margin:8px 0;padding-left:15px;position:relative;display:flex;align-items:center">
+                  <span style="position:absolute;left:0;color:#2962ff">•</span>
+                  <span>International Conference on Computer Vision (<b>ICCV</b>)</span>
+                </li>
+                <li style="margin:8px 0;padding-left:15px;position:relative;display:flex;align-items:center">
+                  <span style="position:absolute;left:0;color:#2962ff">•</span>
+                  <span>Conference on Neural Information Processing Systems (<b>NeurIPS</b>)</span>
                 </li>
               </ul>
             </div>
+
+            <!-- 2024 -->
+            <div style="margin:15px 0">
+              <h4 style="color:#666;font-size:1.1em;margin-bottom:10px">2024</h4>
+              <ul style="list-style:none;padding-left:20px">
+                <li style="margin:8px 0;padding-left:15px;position:relative;display:flex;align-items:center">
+                  <span style="position:absolute;left:0;color:#2962ff">•</span>
+                  <span>Computer Vision in the Wild (<b>CVinW</b>) Workshop at CVPR</span>
+                </li>
+                <li style="margin:8px 0;padding-left:15px;position:relative;display:flex;align-items:center">
+                  <span style="position:absolute;left:0;color:#2962ff">•</span>
+                  <span>European Conference on Computer Vision (<b>ECCV</b>)</span>
+                </li>
+                <li style="margin:8px 0;padding-left:15px;position:relative;display:flex;align-items:center">
+                  <span style="position:absolute;left:0;color:#2962ff">•</span>
+                  <span>Conference on Neural Information Processing Systems (<b>NeurIPS</b>)</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Organizer Section -->
+          <div style="margin:20px 0;padding:20px;background:linear-gradient(to right,#f8f9fa,white);border-radius:10px;box-shadow:0 2px 5px rgba(0,0,0,0.05)">
+            <h3 style="color:#2962ff;font-size:1.2em;margin-bottom:15px;display:flex;align-items:center">
+              <i class="fas fa-users" style="margin-right:10px"></i>Workshop Organizer
+            </h3>
+            <ul style="list-style:none;padding-left:20px">
+              <li style="margin:8px 0;padding-left:15px;position:relative;display:flex;align-items:center">
+                <span style="position:absolute;left:0;color:#2962ff">•</span>
+                <span>Computer Vision in the Wild (<b>CVinW</b>) Workshop at CVPR 2025</span>
+              </li>
+              <li style="margin:8px 0;padding-left:15px;position:relative;display:flex;align-items:center">
+                <span style="position:absolute;left:0;color:#2962ff">•</span>
+                <span>Computer Vision in the Wild (<b>CVinW</b>) Workshop at CVPR 2023</span>
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </tbody></table>
+
+      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+        <tr>
+          <td style="padding:0px">
+            <br>
+            <p style="text-align:right;font-size:small;">
+              Amazing template by <a href="https://jonbarron.info/">Jon Barron</a>. Big thanks!
+            </p>
           </td>
         </tr>
       </tbody></table>
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr>
-            <td style="padding:0px">
-              <br>
-              <p style="text-align:right;font-size:small;">
-                Amazing template by <a href="https://jonbarron.info/">Jon Barron</a>. Big thanks!
-              </p>
-            </td>
-          </tr>
-        </tbody></table>
-      </td>
-    </tr>
-  </table>
-
-  <tr>
-    <td colspan="2" style="padding:0">
-      <hr style="border:none;height:1px;background:linear-gradient(to right,transparent,#ddd,transparent);margin:20px 0">
     </td>
   </tr>
+</table>
 
-  <!-- 在body最后添加模态框结构 -->
-  <div id="imageModal" class="modal">
-    <span class="close-modal">&times;</span>
-    <img class="modal-content" id="modalImage">
-  </div>
+<tr>
+  <td colspan="2" style="padding:0">
+    <hr style="border:none;height:1px;background:linear-gradient(to right,transparent,#ddd,transparent);margin:20px 0">
+  </td>
+</tr>
 
-  <!-- 添加JavaScript代码，可放在body结束标签前 -->
-  <script>
-    // 获取模态框元素
-    var modal = document.getElementById("imageModal");
-    var modalImg = document.getElementById("modalImage");
-    
-    // 为所有研究图片添加点击事件
-    document.addEventListener('DOMContentLoaded', function() {
-      var images = document.querySelectorAll('.research-image');
-      images.forEach(function(img) {
-        img.onclick = function() {
-          modal.style.display = "block";
-          modalImg.src = this.src;
-        }
-      });
-      
-      // 点击关闭按钮关闭模态框
-      var closeBtn = document.getElementsByClassName("close-modal")[0];
-      closeBtn.onclick = function() {
-        modal.style.display = "none";
-      }
-      
-      // 点击模态框外部区域也可关闭
-      modal.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
+<!-- 在body最后添加模态框结构 -->
+<div id="imageModal" class="modal">
+  <span class="close-modal">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
+
+<!-- 添加JavaScript代码，可放在body结束标签前 -->
+<script>
+  // 获取模态框元素
+  var modal = document.getElementById("imageModal");
+  var modalImg = document.getElementById("modalImage");
+  
+  // 为所有研究图片添加点击事件
+  document.addEventListener('DOMContentLoaded', function() {
+    var images = document.querySelectorAll('.research-image');
+    images.forEach(function(img) {
+      img.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
       }
     });
-  </script>
+    
+    // 点击关闭按钮关闭模态框
+    var closeBtn = document.getElementsByClassName("close-modal")[0];
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+    
+    // 点击模态框外部区域也可关闭
+    modal.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  });
+</script>
 </body>
 </html>
