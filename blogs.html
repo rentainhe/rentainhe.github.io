@@ -1,0 +1,275 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Tianhe Ren - Blogs</title>
+  
+  <meta name="author" content="Tianhe Ren">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+  <!-- 添加markdown渲染所需的样式 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
+  <!-- 添加代码高亮库样式 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+  
+  <style>
+    body {
+      font-family: 'Lato', Verdana, Helvetica, sans-serif;
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .blog-header {
+      background-color: #f8f9fa;
+      padding: 20px 0;
+      border-bottom: 1px solid #eaecef;
+      margin-bottom: 40px;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .blog-item {
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .blog-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .tag-item {
+      display: inline-block;
+      padding: 6px 12px;
+      background: #f5f7fa;
+      color: #2962ff;
+      text-decoration: none;
+      border-radius: 15px;
+      font-size: 0.9em;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+    }
+    
+    .tag-item:hover {
+      background: #e8f0fe;
+    }
+    
+    .active-tag {
+      background-color: #2962ff;
+      color: white;
+      border-color: #2962ff;
+    }
+    
+    .post-tags a {
+      color: #2962ff;
+      text-decoration: none;
+      margin-right: 5px;
+      background: #f0f4ff;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.8em;
+      transition: all 0.2s;
+    }
+    
+    .post-tags a:hover {
+      background: #e0e8ff;
+    }
+    
+    .markdown-body {
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      background: white;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 博客列表容器 -->
+  <div class="blog-header">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <h1 style="color:#2962ff;margin:0;">My Blogs</h1>
+        <a href="index.html" style="display:inline-block;padding:8px 15px;background:#f5f7fa;color:#2962ff;text-decoration:none;border-radius:20px;font-weight:500;transition:all 0.3s;box-shadow:0 2px 5px rgba(0,0,0,0.05);">
+          <i class="fas fa-home" style="margin-right:5px;"></i> Back to Homepage
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container" id="blogListContainer">
+    <!-- 标签筛选系统 -->
+    <div class="tags-container" style="margin-bottom:30px;text-align:center;">
+      <div style="margin-bottom:10px;font-weight:500;color:#555;">Filter by Tags:</div>
+      <div class="tags-list" style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
+        <a href="javascript:void(0);" onclick="filterByTag('all')" class="tag-item active-tag" data-tag="all">
+          All Topics
+        </a>
+        <a href="javascript:void(0);" onclick="filterByTag('Computer Vision')" class="tag-item" data-tag="Computer Vision">
+          Computer Vision
+        </a>
+        <a href="javascript:void(0);" onclick="filterByTag('Foundation Models')" class="tag-item" data-tag="Foundation Models">
+          Foundation Models
+        </a>
+        <a href="javascript:void(0);" onclick="filterByTag('Open Source')" class="tag-item" data-tag="Open Source">
+          Open Source
+        </a>
+        <a href="javascript:void(0);" onclick="filterByTag('Deep Learning')" class="tag-item" data-tag="Deep Learning">
+          Deep Learning
+        </a>
+      </div>
+    </div>
+    
+    <div class="blog-list">
+      <!-- 博客项目 -->
+      <div class="blog-item" data-tags="Computer Vision,Foundation Models">
+        <h2 style="color:#2962ff;margin-bottom:10px;">Test</h2>
+        <div style="color:#666;margin-bottom:15px;">
+          <i class="far fa-calendar-alt" style="margin-right:5px;"></i> November 15, 2024
+          <span style="margin:0 10px;">|</span>
+          <i class="fas fa-tag" style="margin-right:5px;"></i> 
+          <span class="post-tags">
+            <a href="javascript:void(0);" onclick="filterByTag('Computer Vision')">Computer Vision</a>
+            <a href="javascript:void(0);" onclick="filterByTag('Foundation Models')">Foundation Models</a>
+          </span>
+        </div>
+        <p style="color:#333;margin-bottom:15px;">Test</p>
+        <a href="javascript:void(0);" onclick="loadBlogContent('computer_vision_trends_2024.md')" style="color:#2962ff;text-decoration:none;font-weight:500;">
+          Read More <i class="fas fa-arrow-right" style="margin-left:5px;"></i>
+        </a>
+      </div>
+    
+    <!-- 无匹配结果提示 -->
+    <div id="noResults" style="display:none;text-align:center;padding:30px;color:#666;">
+      <i class="fas fa-search" style="font-size:3em;color:#ddd;margin-bottom:15px;display:block;"></i>
+      <p>No blogs found matching this tag.</p>
+      <a href="javascript:void(0);" onclick="filterByTag('all')" style="display:inline-block;margin-top:15px;padding:8px 15px;background:#f5f7fa;color:#2962ff;text-decoration:none;border-radius:20px;font-weight:500;">
+        View All Blogs
+      </a>
+    </div>
+  </div>
+  
+  <!-- 博客内容显示区域 -->
+  <div class="container" id="blogContentContainer" style="display:none;">
+    <div style="text-align:right;margin-bottom:20px;">
+      <a href="javascript:void(0);" onclick="backToBlogList()" style="display:inline-block;padding:8px 15px;background:#f5f7fa;color:#2962ff;text-decoration:none;border-radius:20px;font-weight:500;transition:all 0.3s;box-shadow:0 2px 5px rgba(0,0,0,0.05);">
+        <i class="fas fa-arrow-left" style="margin-right:5px;"></i> Back to Blog List
+      </a>
+    </div>
+    
+    <div id="blogContent" class="markdown-body">
+      <!-- 这里将动态加载博客内容 -->
+    </div>
+  </div>
+  
+  <!-- JavaScript库 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.12/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  
+  <script>
+    // 根据标签筛选博客
+    function filterByTag(tag) {
+      // 更新选中标签的样式
+      document.querySelectorAll('.tag-item').forEach(item => {
+        if (item.getAttribute('data-tag') === tag) {
+          item.classList.add('active-tag');
+        } else {
+          item.classList.remove('active-tag');
+        }
+      });
+      
+      // 筛选博客项目
+      var hasVisibleItems = false;
+      document.querySelectorAll('.blog-item').forEach(item => {
+        var itemTags = item.getAttribute('data-tags').split(',');
+        
+        if (tag === 'all' || itemTags.includes(tag)) {
+          item.style.display = 'block';
+          hasVisibleItems = true;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+      
+      // 显示或隐藏"无结果"提示
+      document.getElementById('noResults').style.display = hasVisibleItems ? 'none' : 'block';
+    }
+    
+    // 加载博客内容
+    function loadBlogContent(filename) {
+      var blogListContainer = document.getElementById('blogListContainer');
+      var blogContentContainer = document.getElementById('blogContentContainer');
+      var blogContent = document.getElementById('blogContent');
+      
+      // 显示加载中的信息
+      blogContent.innerHTML = '<div style="text-align:center;padding:20px;"><i class="fas fa-spinner fa-spin" style="font-size:24px;color:#2962ff;"></i><p>Loading...</p></div>';
+      
+      // 使用Fetch API加载Markdown文件
+      fetch('Blogs/' + filename)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(markdownText => {
+          // 解析Markdown为HTML
+          const htmlContent = marked.parse(markdownText);
+          
+          // 设置博客内容
+          blogContent.innerHTML = htmlContent;
+          
+          // 处理内容中的代码块，添加语法高亮
+          document.querySelectorAll('pre code').forEach((block) => {
+            if (window.hljs) {
+              hljs.highlightBlock(block);
+            }
+          });
+        })
+        .catch(error => {
+          console.error('Error loading blog content:', error);
+          blogContent.innerHTML = `<div style="text-align:center;padding:20px;color:#ff3e3e;">
+            <i class="fas fa-exclamation-triangle" style="font-size:24px;"></i>
+            <p>Error loading blog content. Please try again later.</p>
+          </div>`;
+        });
+      
+      // 显示博客内容容器，隐藏列表
+      blogListContainer.style.display = 'none';
+      blogContentContainer.style.display = 'block';
+      // 滚动到顶部
+      window.scrollTo(0, 0);
+    }
+    
+    // 返回博客列表
+    function backToBlogList() {
+      var blogListContainer = document.getElementById('blogListContainer');
+      var blogContentContainer = document.getElementById('blogContentContainer');
+      
+      blogListContainer.style.display = 'block';
+      blogContentContainer.style.display = 'none';
+      // 滚动到顶部
+      window.scrollTo(0, 0);
+    }
+    
+    // 页面加载完成后初始化标签系统
+    document.addEventListener('DOMContentLoaded', function() {
+      // 初始化时显示所有博客
+      filterByTag('all');
+    });
+  </script>
+</body>
+</html> 

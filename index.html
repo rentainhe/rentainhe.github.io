@@ -116,7 +116,7 @@
 
 
 <body>
-  <table style="width:100%;max-width:850px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+  <table id="mainContent" style="width:100%;max-width:850px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
     <tr style="padding:0px">
       <td style="padding:0px">
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
@@ -164,6 +164,11 @@
                 
                 <a href="https://www.zhihu.com/people/shi-zhi-tou-xi-de-yang-guang" style="display:inline-block;margin:5px 8px;padding:8px 15px;background:#f5f7fa;color:#2962ff;text-decoration:none;border-radius:20px;font-weight:500;transition:all 0.3s;box-shadow:0 2px 5px rgba(0,0,0,0.05);" onmouseover="this.style.background='#2962ff';this.style.color='white';" onmouseout="this.style.background='#f5f7fa';this.style.color='#2962ff';">
                   <i class="fab fa-zhihu" style="margin-right:5px;"></i> ZhiHu
+                </a>
+
+                <!-- 修改Blogs按钮链接到blogs.html -->
+                <a href="blogs.html" style="display:inline-block;margin:5px 8px;padding:8px 15px;background:#f5f7fa;color:#2962ff;text-decoration:none;border-radius:20px;font-weight:500;transition:all 0.3s;box-shadow:0 2px 5px rgba(0,0,0,0.05);" onmouseover="this.style.background='#2962ff';this.style.color='white';" onmouseout="this.style.background='#f5f7fa';this.style.color='#2962ff';">
+                  <i class="fas fa-blog" style="margin-right:5px;"></i> Blogs (under test)
                 </a>
               </div>
             </td>
@@ -645,115 +650,6 @@
         <tr>
         <td style="padding:20px;width:100%;vertical-align:middle">
           <heading>Work Experiences</heading>
-        </td>
-      </tr>
-    </tbody></table>
-
-    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-      <tr class="paper-item">
-        <td style="padding:20px;width:30%;vertical-align:middle">
-          <div class="research-image-container">
-            <img src='images/icon.png' alt="IDEA" width="180" height="130" class="research-image">
-          </div>
-        </td>
-        <td style="padding:20px;width:70%;vertical-align:top">
-          <strong style="color:#2962ff;font-size:1.1em;display:block;margin-bottom:10px">International Digital Economy Academy (IDEA)</strong>
-          
-          <papertitle style="color:#333;font-size:1.05em;display:block;margin-bottom:14px;line-height:1.4">Senior Computer Vision Engineer and Researcher</papertitle>
-          
-          <span style="color:#666;display:block;margin-bottom:10px;line-height:1.5">
-            <i class="fas fa-calendar-alt"></i>
-            2022 - Present
-          </span>
-          
-          <span style="color:#666;display:block;margin-bottom:16px;line-height:1.5">
-            <i class="fas fa-user"></i>
-            Advisor: <a href="https://www.leizhang.org/" style="color:#2962ff">Lei Zhang</a>
-          </span>
-          
-          <ul style="list-style-type:none;padding-left:0;margin-top:14px">
-            <li style="margin:10px 0;padding-left:20px;position:relative;line-height:1.6">
-              <span style="position:absolute;left:0;color:#2962ff">•</span>
-              Leading research and development of vision foundation models
-            </li>
-            <li style="margin:10px 0;padding-left:20px;position:relative;line-height:1.6">
-              <span style="position:absolute;left:0;color:#2962ff">•</span>
-              Developed high-impact open-source projects
-            </li>
-          </ul>
-        </td>
-      </tr>
-
-      <tr class="paper-item" style="margin-top:30px">
-        <td style="padding:20px;width:30%;vertical-align:middle">
-          <div class="research-image-container">
-            <img src='images/oneflow_logo.png' alt="OneFlow" width="180" height="130" class="research-image">
-          </div>
-        </td>
-        <td style="padding:20px;width:70%;vertical-align:top">
-          <strong style="color:#2962ff;font-size:1.1em;display:block;margin-bottom:10px">OneFlow (SiliconFlow Now)</strong>
-          
-          <papertitle style="color:#333;font-size:1.05em;display:block;margin-bottom:14px;line-height:1.4">Computer Vision Engineer</papertitle>
-          
-          <span style="color:#666;display:block;margin-bottom:10px;line-height:1.5">
-            <i class="fas fa-calendar-alt"></i>
-            2021 - 2022
-          </span>
-          
-          <span style="color:#666;display:block;margin-bottom:16px;line-height:1.5">
-            <i class="fas fa-user"></i>
-            Advisor: <a href="https://scholar.google.com/citations?user=HtfAR1IAAAAJ&hl=en" style="color:#2962ff">Jinhui Yuan</a>
-          </span>
-          
-          <ul style="list-style-type:none;padding-left:0;margin-top:14px">
-            <li style="margin:10px 0;padding-left:20px;position:relative;line-height:1.6">
-              <span style="position:absolute;left:0;color:#2962ff">•</span>
-              Develop deep learning frameworks and computer vision models
-            </li>
-            <li style="margin:10px 0;padding-left:20px;position:relative;line-height:1.6">
-              <span style="position:absolute;left:0;color:#2962ff">•</span>
-              Contribute to OneFlow's computer vision ecosystem
-            </li>
-          </ul>
-        </td>
-      </tr>
-
-      <tr class="paper-item" style="margin-top:30px">
-        <td style="padding:20px;width:30%;vertical-align:middle">
-          <div class="research-image-container">
-            <img src='images/macbanner.jpg' alt="XMU" width="180" height="130" class="research-image">
-          </div>
-        </td>
-        <td style="padding:20px;width:70%;vertical-align:top">
-          <strong style="color:#2962ff;font-size:1.1em;display:block;margin-bottom:10px">MAC Lab, Xiamen University</strong>
-          
-          <papertitle style="color:#333;font-size:1.05em;display:block;margin-bottom:14px;line-height:1.4">Research Assistant</papertitle>
-          
-          <span style="color:#666;display:block;margin-bottom:10px;line-height:1.5">
-            <i class="fas fa-calendar-alt"></i>
-            2019 - 2021
-          </span>
-          
-          <span style="color:#666;display:block;margin-bottom:16px;line-height:1.5">
-            <i class="fas fa-user"></i>
-            Advisors: <a href="https://scholar.google.com/citations?user=w3_2ep0AAAAJ&hl=zh-CN&oi=ao" style="color:#2962ff">Yiyi Zhou</a> and 
-            <a href="https://mac.xmu.edu.cn/rrji/" style="color:#2962ff">Rongrong Ji</a>
-          </span>
-          
-          <ul style="list-style-type:none;padding-left:0;margin-top:14px">
-            <li style="margin:10px 0;padding-left:20px;position:relative;line-height:1.6">
-              <span style="position:absolute;left:0;color:#2962ff">•</span>
-              Conducted research on multi-modal learning
-            </li>
-          </ul>
-        </td>
-      </tr>
-    </tbody></table>
-
-      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-        <tr>
-        <td style="padding:20px;width:100%;vertical-align:middle">
-          <heading>Professional Services</heading>
           <!-- Conference Reviewer Section -->
           <div style="margin:20px 0;padding:20px;background:linear-gradient(to right,#f8f9fa,white);border-radius:10px;box-shadow:0 2px 5px rgba(0,0,0,0.05)">
             <h3 style="color:#2962ff;font-size:1.2em;margin-bottom:15px;display:flex;align-items:center">
@@ -887,5 +783,6 @@
     }
   });
 </script>
+
 </body>
 </html>
