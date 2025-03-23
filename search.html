@@ -1,0 +1,447 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Tianhe Ren - Blog Search</title>
+  
+  <meta name="author" content="Tianhe Ren">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+  <!-- 添加markdown渲染所需的样式 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
+  <!-- 添加代码高亮库样式 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+  
+  <style>
+    body {
+      font-family: 'Lato', Verdana, Helvetica, sans-serif;
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .search-header {
+      background-color: #f8f9fa;
+      padding: 20px 0;
+      border-bottom: 1px solid #eaecef;
+      margin-bottom: 40px;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .search-input-container {
+      display: flex;
+      margin-bottom: 30px;
+      position: relative;
+    }
+    
+    .search-input {
+      flex: 1;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: 2px solid #e0e8ff;
+      border-radius: 25px 0 0 25px;
+      outline: none;
+      transition: all 0.3s;
+    }
+    
+    .search-input:focus {
+      border-color: #2962ff;
+      box-shadow: 0 0 0 3px rgba(41, 98, 255, 0.1);
+    }
+    
+    .search-button {
+      background: #2962ff;
+      color: white;
+      border: none;
+      padding: 0 25px;
+      border-radius: 0 25px 25px 0;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .search-button:hover {
+      background: #1a4dda;
+    }
+    
+    .search-status {
+      position: absolute;
+      right: 80px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      color: #777;
+      display: none;
+    }
+    
+    .search-status.active {
+      display: inline-block;
+    }
+    
+    .search-status i {
+      margin-right: 5px;
+      animation: spin 1s infinite linear;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .blog-item {
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .blog-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .post-tags a {
+      color: #2962ff;
+      text-decoration: none;
+      margin-right: 5px;
+      background: #f0f4ff;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.8em;
+      transition: all 0.2s;
+    }
+    
+    .post-tags a:hover {
+      background: #e0e8ff;
+    }
+    
+    .highlight {
+      background-color: #ffff99;
+      padding: 2px;
+    }
+    
+    .search-options {
+      display: flex;
+      margin-bottom: 20px;
+      gap: 15px;
+    }
+    
+    .search-option {
+      display: flex;
+      align-items: center;
+    }
+    
+    .search-option input {
+      margin-right: 5px;
+    }
+    
+    .no-results {
+      text-align: center;
+      padding: 50px 0;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 搜索页面标题 -->
+  <div class="search-header">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <h1 style="color:#2962ff;margin:0;">Search Blogs</h1>
+        <div>
+          <a href="blogs.html" style="display:inline-block;padding:8px 15px;background:#f5f7fa;color:#2962ff;text-decoration:none;border-radius:20px;font-weight:500;transition:all 0.3s;margin-right:10px;box-shadow:0 2px 5px rgba(0,0,0,0.05);">
+            <i class="fas fa-newspaper" style="margin-right:5px;"></i> All Blogs
+          </a>
+          <a href="index.html" style="display:inline-block;padding:8px 15px;background:#f5f7fa;color:#2962ff;text-decoration:none;border-radius:20px;font-weight:500;transition:all 0.3s;box-shadow:0 2px 5px rgba(0,0,0,0.05);">
+            <i class="fas fa-home" style="margin-right:5px;"></i> Home
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <!-- 搜索框和按钮 -->
+    <div class="search-input-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="Enter keywords to search blogs..." autofocus>
+      <span class="search-status" id="searchStatus"><i class="fas fa-spinner"></i> Searching...</span>
+      <button id="searchButton" class="search-button">
+        <i class="fas fa-search"></i> Search
+      </button>
+    </div>
+    
+    <!-- 搜索选项 -->
+    <div class="search-options">
+      <div class="search-option">
+        <input type="checkbox" id="titleSearch" checked>
+        <label for="titleSearch">Search in titles</label>
+      </div>
+      <div class="search-option">
+        <input type="checkbox" id="contentSearch" checked>
+        <label for="contentSearch">Search in content</label>
+      </div>
+      <div class="search-option">
+        <input type="checkbox" id="tagSearch" checked>
+        <label for="tagSearch">Search in tags</label>
+      </div>
+    </div>
+    
+    <!-- 搜索结果 -->
+    <div id="searchResults">
+      <div class="no-results" id="initialMessage">
+        <i class="fas fa-search" style="font-size:3em;color:#ddd;margin-bottom:15px;display:block;"></i>
+        <p>Enter keywords above to search for blogs</p>
+      </div>
+      
+      <div class="no-results" id="noResults" style="display:none;">
+        <i class="fas fa-search-minus" style="font-size:3em;color:#ddd;margin-bottom:15px;display:block;"></i>
+        <p>No blogs found matching your search query</p>
+        <p>Try different keywords or search options</p>
+      </div>
+      
+      <div id="resultsList">
+        <!-- 搜索结果将在这里动态显示 -->
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // 博客数据
+    let blogs = [];
+    
+    // 防抖函数，避免频繁触发搜索
+    function debounce(func, delay) {
+      let debounceTimer;
+      return function() {
+        const context = this;
+        const args = arguments;
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => func.apply(context, args), delay);
+      };
+    }
+    
+    // 初始化函数
+    function init() {
+      // 获取博客数据
+      fetchBlogData();
+      
+      // 搜索按钮点击事件
+      document.getElementById('searchButton').addEventListener('click', performSearch);
+      
+      // 回车键搜索
+      document.getElementById('searchInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          performSearch();
+        }
+      });
+      
+      // 添加实时搜索功能 - 监听输入事件
+      document.getElementById('searchInput').addEventListener('input', debounce(function() {
+        performSearch();
+      }, 300)); // 添加300毫秒的延迟，避免频繁搜索
+      
+      // 搜索选项变化时重新搜索
+      document.querySelectorAll('.search-option input').forEach(input => {
+        input.addEventListener('change', function() {
+          if (document.getElementById('searchInput').value.trim() !== '') {
+            performSearch();
+          }
+        });
+      });
+      
+      // 从URL获取搜索查询参数
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryParam = urlParams.get('q');
+      
+      if (queryParam) {
+        document.getElementById('searchInput').value = queryParam;
+        performSearch();
+      }
+    }
+    
+    // 搜索功能
+    function performSearch() {
+      const searchQuery = document.getElementById('searchInput').value.trim().toLowerCase();
+      const searchInTitle = document.getElementById('titleSearch').checked;
+      const searchInContent = document.getElementById('contentSearch').checked;
+      const searchInTags = document.getElementById('tagSearch').checked;
+      
+      // 如果搜索框为空，显示初始消息
+      if (searchQuery === '') {
+        document.getElementById('initialMessage').style.display = 'block';
+        document.getElementById('noResults').style.display = 'none';
+        document.getElementById('resultsList').innerHTML = '';
+        document.getElementById('searchStatus').classList.remove('active');
+        return;
+      }
+      
+      // 显示搜索状态
+      document.getElementById('searchStatus').classList.add('active');
+      
+      // 隐藏初始消息
+      document.getElementById('initialMessage').style.display = 'none';
+      
+      // 延迟一点执行搜索，使UI能够更新状态
+      setTimeout(() => {
+        // 筛选匹配的博客
+        const matchedBlogs = blogs.filter(blog => {
+          // 标题匹配
+          if (searchInTitle && blog.title.toLowerCase().includes(searchQuery)) {
+            return true;
+          }
+          
+          // 内容匹配
+          if (searchInContent && blog.content.toLowerCase().includes(searchQuery)) {
+            return true;
+          }
+          
+          // 标签匹配
+          if (searchInTags && blog.tags.some(tag => tag.toLowerCase().includes(searchQuery))) {
+            return true;
+          }
+          
+          return false;
+        });
+        
+        // 显示搜索结果
+        const resultsListElement = document.getElementById('resultsList');
+        
+        if (matchedBlogs.length === 0) {
+          // 无匹配结果
+          document.getElementById('noResults').style.display = 'block';
+          resultsListElement.innerHTML = '';
+        } else {
+          // 有匹配结果
+          document.getElementById('noResults').style.display = 'none';
+          
+          // 生成搜索结果HTML
+          resultsListElement.innerHTML = matchedBlogs.map(blog => {
+            // 高亮匹配的文本
+            let highlightedTitle = blog.title;
+            let highlightedSummary = blog.summary;
+            
+            if (searchInTitle && blog.title.toLowerCase().includes(searchQuery)) {
+              const regex = new RegExp(searchQuery, 'gi');
+              highlightedTitle = blog.title.replace(regex, match => `<span class="highlight">${match}</span>`);
+            }
+            
+            if (searchInContent && blog.summary.toLowerCase().includes(searchQuery)) {
+              const regex = new RegExp(searchQuery, 'gi');
+              highlightedSummary = blog.summary.replace(regex, match => `<span class="highlight">${match}</span>`);
+            }
+            
+            return `
+              <div class="blog-item">
+                <h2 style="color:#2962ff;margin-bottom:10px;">${highlightedTitle}</h2>
+                <div style="color:#666;margin-bottom:15px;">
+                  <i class="far fa-calendar-alt" style="margin-right:5px;"></i> ${blog.date}
+                  <span style="margin:0 10px;">|</span>
+                  <i class="fas fa-tag" style="margin-right:5px;"></i> 
+                  <span class="post-tags">
+                    ${blog.tags.map(tag => `<a href="blogs.html" onclick="event.preventDefault(); window.location.href='blogs.html?tag=${tag}';">${tag}</a>`).join('')}
+                  </span>
+                </div>
+                <p style="color:#333;margin-bottom:15px;">${highlightedSummary}</p>
+                <a href="javascript:void(0);" onclick="window.location.href='blogs.html?blog=${blog.filename}'" style="color:#2962ff;text-decoration:none;font-weight:500;">
+                  Read More <i class="fas fa-arrow-right" style="margin-left:5px;"></i>
+                </a>
+              </div>
+            `;
+          }).join('');
+        }
+        
+        // 隐藏搜索状态
+        document.getElementById('searchStatus').classList.remove('active');
+      }, 50); // 短暂延迟，让UI可以更新
+    }
+    
+    // 函数：获取博客数据
+    function fetchBlogData() {
+      // 显示初始加载消息
+      document.getElementById('initialMessage').innerHTML = `
+        <i class="fas fa-spinner fa-spin" style="font-size:3em;color:#2962ff;margin-bottom:15px;display:block;"></i>
+        <p>Loading blog data...</p>
+      `;
+      
+      // 从blogs.html页面获取博客数据
+      fetch('blogs.html')
+        .then(response => response.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const blogItems = doc.querySelectorAll('.blog-item');
+          
+          blogs = Array.from(blogItems).map(item => {
+            // 获取标题
+            const titleElement = item.querySelector('h2');
+            const title = titleElement ? titleElement.textContent.trim() : 'Untitled';
+            
+            // 获取日期
+            const dateElement = item.querySelector('.far.fa-calendar-alt');
+            const date = dateElement ? dateElement.parentNode.textContent.split('|')[0].trim() : '';
+            
+            // 获取标签
+            const tagElements = item.querySelectorAll('.post-tags a');
+            const tags = Array.from(tagElements).map(tag => tag.textContent.trim());
+            
+            // 获取摘要
+            const summaryElement = item.querySelector('p');
+            const summary = summaryElement ? summaryElement.textContent.trim() : '';
+            
+            // 获取文件名
+            const readMoreLink = item.querySelector('a[onclick]');
+            let filename = '';
+            if (readMoreLink) {
+              const onclickAttr = readMoreLink.getAttribute('onclick');
+              const match = onclickAttr.match(/loadBlogContent\('([^']+)'\)/);
+              filename = match ? match[1] : '';
+            }
+            
+            // 构建博客对象
+            return {
+              title,
+              date,
+              tags,
+              summary,
+              content: summary, // 这里使用摘要作为内容，实际应用中应该获取完整内容
+              filename
+            };
+          });
+          
+          // 恢复初始提示
+          document.getElementById('initialMessage').innerHTML = `
+            <i class="fas fa-search" style="font-size:3em;color:#ddd;margin-bottom:15px;display:block;"></i>
+            <p>Enter keywords above to search for blogs</p>
+          `;
+          
+          // 如果URL中已有搜索参数，执行搜索
+          const urlParams = new URLSearchParams(window.location.search);
+          if (urlParams.has('q')) {
+            performSearch();
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching blog data:', error);
+          document.getElementById('initialMessage').innerHTML = `
+            <i class="fas fa-exclamation-triangle" style="font-size:3em;color:#ff3e3e;margin-bottom:15px;display:block;"></i>
+            <p>Error loading blog data. Please try again later.</p>
+          `;
+        });
+    }
+    
+    // 页面加载完成后初始化
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
