@@ -115,44 +115,61 @@
     </div>
   </div>
   
+  <!-- 
+    标签定义区域 - 在这里添加或修改标签
+    这些标签将自动用于筛选系统和博客文章标签
+  -->
+  <script>
+    const allTags = [
+      'Computer Vision',
+      'Foundation Models', 
+      'Open Source',
+      'Deep Learning',
+      'Reinforcement Learning',
+      'Huggingface Transformers',
+      // 在这里添加新标签即可
+    ];
+  </script>
+  
   <div class="container" id="blogListContainer">
     <!-- 标签筛选系统 -->
     <div class="tags-container" style="margin-bottom:30px;text-align:center;">
       <div style="margin-bottom:10px;font-weight:500;color:#555;">Filter by Tags:</div>
       <div class="tags-list" style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
-        <a href="javascript:void(0);" onclick="filterByTag('all')" class="tag-item active-tag" data-tag="all">
-          All Topics
-        </a>
-        <a href="javascript:void(0);" onclick="filterByTag('Computer Vision')" class="tag-item" data-tag="Computer Vision">
-          Computer Vision
-        </a>
-        <a href="javascript:void(0);" onclick="filterByTag('Foundation Models')" class="tag-item" data-tag="Foundation Models">
-          Foundation Models
-        </a>
-        <a href="javascript:void(0);" onclick="filterByTag('Open Source')" class="tag-item" data-tag="Open Source">
-          Open Source
-        </a>
-        <a href="javascript:void(0);" onclick="filterByTag('Deep Learning')" class="tag-item" data-tag="Deep Learning">
-          Deep Learning
-        </a>
+        <!-- 这里的内容将由JavaScript自动生成 -->
       </div>
     </div>
     
     <div class="blog-list">
       <!-- 博客项目 -->
-      <div class="blog-item" data-tags="Computer Vision,Foundation Models">
-        <h2 style="color:#2962ff;margin-bottom:10px;">Test</h2>
+      <div class="blog-item" data-tags="Huggingface Transformers">
+        <h2 style="color:#2962ff;margin-bottom:10px;">Basic Usage of the Configuration in Transformers</h2>
         <div style="color:#666;margin-bottom:15px;">
-          <i class="far fa-calendar-alt" style="margin-right:5px;"></i> November 15, 2024
+          <i class="far fa-calendar-alt" style="margin-right:5px;"></i> March 31, 2025
           <span style="margin:0 10px;">|</span>
           <i class="fas fa-tag" style="margin-right:5px;"></i> 
           <span class="post-tags">
-            <a href="javascript:void(0);" onclick="filterByTag('Computer Vision')">Computer Vision</a>
-            <a href="javascript:void(0);" onclick="filterByTag('Foundation Models')">Foundation Models</a>
+            <!-- 这里的内容将由JavaScript自动生成 -->
           </span>
         </div>
-        <p style="color:#333;margin-bottom:15px;">Test</p>
-        <a href="javascript:void(0);" onclick="loadBlogContent('computer_vision_trends_2024.md')" style="color:#2962ff;text-decoration:none;font-weight:500;">
+        <p style="color:#333;margin-bottom:15px;">Basic usage of PretrainedConfig and AutoConfig in Huggingface Transformers</p>
+        <a href="javascript:void(0);" onclick="loadBlogContent('huggingface_transformers/configuration_1.md')" style="color:#2962ff;text-decoration:none;font-weight:500;">
+          Read More <i class="fas fa-arrow-right" style="margin-left:5px;"></i>
+        </a>
+      </div>
+
+      <div class="blog-item" data-tags="Reinforcement Learning">
+        <h2 style="color:#2962ff;margin-bottom:10px;">Basic Concepts of Reinforcement Learning</h2>
+        <div style="color:#666;margin-bottom:15px;">
+          <i class="far fa-calendar-alt" style="margin-right:5px;"></i> March 29, 2025
+          <span style="margin:0 10px;">|</span>
+          <i class="fas fa-tag" style="margin-right:5px;"></i> 
+          <span class="post-tags">
+            <!-- 这里的内容将由JavaScript自动生成 -->
+          </span>
+        </div>
+        <p style="color:#333;margin-bottom:15px;">Model Based / Model Free / Policy Iteration / Value Iteration</p>
+        <a href="javascript:void(0);" onclick="loadBlogContent('reinforcement_learning_basic.md')" style="color:#2962ff;text-decoration:none;font-weight:500;">
           Read More <i class="fas fa-arrow-right" style="margin-left:5px;"></i>
         </a>
       </div>
@@ -187,6 +204,39 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
   
   <script>
+    // 生成标签筛选系统
+    function generateTagFilters() {
+      const tagsContainer = document.querySelector('.tags-list');
+      tagsContainer.innerHTML = `
+        <a href="javascript:void(0);" onclick="filterByTag('all')" class="tag-item active-tag" data-tag="all">
+          All Topics
+        </a>
+      `;
+      
+      allTags.forEach(tag => {
+        tagsContainer.innerHTML += `
+          <a href="javascript:void(0);" onclick="filterByTag('${tag}')" class="tag-item" data-tag="${tag}">
+            ${tag}
+          </a>
+        `;
+      });
+    }
+    
+    // 根据data-tags自动生成博客文章中的标签链接
+    function generatePostTags() {
+      document.querySelectorAll('.blog-item').forEach(item => {
+        const tags = item.getAttribute('data-tags').split(',');
+        const postTagsContainer = item.querySelector('.post-tags');
+        
+        postTagsContainer.innerHTML = '';
+        tags.forEach(tag => {
+          postTagsContainer.innerHTML += `
+            <a href="javascript:void(0);" onclick="filterByTag('${tag.trim()}')">${tag.trim()}</a>
+          `;
+        });
+      });
+    }
+    
     // 根据标签筛选博客
     function filterByTag(tag) {
       // 更新选中标签的样式
@@ -274,6 +324,12 @@
     
     // 页面加载完成后初始化标签系统
     document.addEventListener('DOMContentLoaded', function() {
+      // 生成标签筛选系统
+      generateTagFilters();
+      
+      // 生成文章标签
+      generatePostTags();
+      
       // 初始化时显示所有博客
       filterByTag('all');
       
